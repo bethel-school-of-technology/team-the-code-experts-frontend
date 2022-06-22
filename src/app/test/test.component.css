@@ -1,0 +1,15 @@
+.userP, .contentP {
+  margin-bottom: 20px;
+  color: white;
+}
+
+
+.divPost {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 20px;
+  margin-left: 20px;
+
+  background-color: black;
+
+}
