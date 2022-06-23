@@ -11,6 +11,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FeedComponent } from './components/home/feed/feed.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NavBarMobileComponent } from './components/nav/nav-bar-mobile/nav-bar-mobile.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavBarMobileComponent } from './components/nav/nav-bar-mobile/nav-bar-m
     SignupComponent,
     FeedComponent,
     ErrorComponent,
-    NavBarMobileComponent
+    NavBarMobileComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

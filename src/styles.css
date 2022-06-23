@@ -23,6 +23,7 @@
     --teal: #20c9a6;
     --cyan: #36b9cc;
     --white: #fff;
+    --grey-light: #9fa2b7;
     --gray: #858796;
     --gray-dark: #5a5c69;
     --primary: #4e73df;
@@ -35,7 +36,8 @@
     --dark: #5a5c69;
     --background: #36363d;
     --background-dark: #202025;
-    --background-light: #4e4e58;
+    --background-mid: #2e2e34;
+    --background-light: #404047;
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
@@ -79,7 +81,7 @@ body {
     line-height: 1.5;
     color: #d9dae3;
     text-align: left;
-    background-color: var(--background);
+    background-color: var(--background-light);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -3350,6 +3352,13 @@ fieldset:disabled a.btn {
     border-radius: 0.2rem;
 }
 
+.btn-xsm,
+.btn-group-sm>.btn {
+    padding: 0rem 0rem;
+    line-height: 0.7;
+    border-radius: 0.25rem;
+}
+
 .btn-block {
     display: block;
     width: 100%;
@@ -3724,6 +3733,12 @@ input[type="button"].btn-block {
 }
 
 .btn-sm+.dropdown-toggle-split,
+.btn-group-sm>.btn+.dropdown-toggle-split {
+    padding-right: 0.375rem;
+    padding-left: 0.375rem;
+}
+
+.btn-xsm+.dropdown-toggle-split,
 .btn-group-sm>.btn+.dropdown-toggle-split {
     padding-right: 0.375rem;
     padding-left: 0.375rem;
@@ -7091,6 +7106,10 @@ button.bg-danger:focus {
     background-color: #d52a1a !important;
 }
 
+.bg-orange {
+    background-color: var(--orange) !important;
+}
+
 .bg-light {
     background-color: var(--background-light) !important;
 }
@@ -7099,6 +7118,17 @@ a.bg-light:hover,
 a.bg-light:focus,
 button.bg-light:hover,
 button.bg-light:focus {
+    background-color: #d4daed !important;
+}
+
+.bg-mid {
+    background-color: var(--background-mid) !important;
+}
+
+a.bg-mid:hover,
+a.bg-mid:focus,
+button.bg-mid:hover,
+button.bg-mid:focus {
     background-color: #d4daed !important;
 }
 
@@ -11341,13 +11371,13 @@ a:focus {
     vertical-align: 0;
     border: 0;
     font-weight: 900;
-    content: '\f105';
+    content: 'A';
     font-family: 'Font Awesome 5 Free';
 }
 
 .sidebar .nav-item.dropdown.show .dropdown-toggle::after,
 .topbar .nav-item.dropdown.show .dropdown-toggle::after {
-    content: '\f107';
+    content: 'B';
 }
 
 .sidebar .nav-item .nav-link,
@@ -11594,7 +11624,7 @@ a:focus {
     padding: 0.5rem 1rem;
     margin: 0 0.5rem;
     display: block;
-    color: #3a3b45;
+    color: #eaecf4;
     text-decoration: none;
     border-radius: 0.35rem;
     white-space: nowrap;
@@ -11602,12 +11632,12 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
-    background-color: #eaecf4;
+    background-color: #b7b9cc;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:active,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:active {
-    background-color: #dddfeb;
+    background-color: #b7b9cc;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
@@ -11767,12 +11797,12 @@ a:focus {
         vertical-align: 0;
         border: 0;
         font-weight: 900;
-        content: '\f107';
+        content: '▲';
         font-family: 'Font Awesome 5 Free';
     }
 
     .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
-        content: '\f105';
+        content: '▼';
     }
 
     .sidebar .sidebar-brand .sidebar-brand-icon i {
@@ -11989,6 +12019,13 @@ a:focus {
     font-size: 0.75rem;
 }
 
+.btn-circle.btn-xsm,
+.btn-group-sm>.btn-circle.btn {
+    height: 1rem;
+    width: 1rem;
+    font-size: 0.75rem;
+}
+
 .btn-circle.btn-lg,
 .btn-group-lg>.btn-circle.btn {
     height: 3.5rem;
@@ -12023,6 +12060,16 @@ a:focus {
 .btn-icon-split.btn-sm .text,
 .btn-group-sm>.btn-icon-split.btn .text {
     padding: 0.25rem 0.5rem;
+}
+
+.btn-icon-split.btn-xsm .icon,
+.btn-group-sm>.btn-icon-split.btn .icon {
+    padding: 0.1rem 0.25rem;
+}
+
+.btn-icon-split.btn-xsm .text,
+.btn-group-sm>.btn-icon-split.btn .text {
+    padding: 0.1rem 0.25rem;
 }
 
 .btn-icon-split.btn-lg .icon,
