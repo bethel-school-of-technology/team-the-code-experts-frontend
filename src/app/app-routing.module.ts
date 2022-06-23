@@ -7,7 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
-  {
+  { // Default page is home
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -20,13 +20,14 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent
   },
-  {
+  { // Error handling
     path: 'error/:id',
     component: ErrorComponent
   },
-  {
-    path: 'error',
-    redirectTo: 'error/'
+  { // Redirect to 404 if invalid page is entered
+    path: '**',
+    redirectTo: 'error/404',
+    pathMatch: 'full'
   }
 ]
 
