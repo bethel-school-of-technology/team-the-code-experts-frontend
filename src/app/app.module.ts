@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { NavComponent } from './components/home/nav/nav.component';
+import { NavComponent } from './components/nav-bar/nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SignupComponent } from './components/signup/signup.component';
 import { FeedComponent } from './components/home/feed/feed.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FeedComponent } from './components/home/feed/feed.component';
     HomeComponent,
     NavComponent,
     SignupComponent,
-    FeedComponent
+    FeedComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
