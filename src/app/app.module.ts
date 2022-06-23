@@ -7,6 +7,7 @@ import { PublicFeedComponent } from './components/home/public-feed/public-feed.c
 import { PrivateFeedComponent } from './components/home/private-feed/private-feed.component';
 import { NavComponent } from './components/home/nav/nav.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
     HomeComponent,
     PublicFeedComponent,
     PrivateFeedComponent,
-    NavComponent
+    NavComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
