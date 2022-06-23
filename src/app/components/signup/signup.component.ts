@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Signup } from 'src/app/model/signup';
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  // signup: Signup;
+  // @Input() dataPath: string;
 
-  constructor() { }
+  // constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+  }
+
+  register(
+    Firstname: string,
+    Lastname: string,
+    Email: string,
+    Username: string,
+    Password: string
+  ) {
+
   }
 
 }
