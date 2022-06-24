@@ -8,6 +8,7 @@
         padding-left: 17em;
     }
 }
+
 @media screen and (max-width: 815px) {
     /* Hide sidebar for mobile */
     #sidebar {
