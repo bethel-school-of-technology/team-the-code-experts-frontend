@@ -2,7 +2,7 @@
     margin-top: 10% !important;
 }
 
-#pass-error {
+.input-error {
     font-size: small;
-    color: rgb(219, 24, 24);
+    color: rgb(219, 24, 24) !important;
 }

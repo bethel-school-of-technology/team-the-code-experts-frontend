@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -20,36 +20,16 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({ // Initiate form
-      firstname: [''],
-      lastname: [''],
-      email: [''],
-      username: [''],
-      password: [''],
-      confirmPassword: ['']
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
   }
 
   register(): any { // Runs when user clicks "Register Account" button
-
-    // Check if First Name is entered
-    if (this.signupForm.value.firstname === "") {
-      return;
-    };
-
-    // Check if Last Name is entered
-    if (this.signupForm.value.lastname === "") {
-      return;
-    };
-
-    // Check if Email is entered
-    if (this.signupForm.value.email === "") {
-      return;
-    };
-
-    // Check if Username is entered and valid
-    if (this.signupForm.value.username === "") {
-      return;
-    };
 
     // Make sure passwords match
     if (this.signupForm.value.password !== this.signupForm.value.confirmPassword) {

@@ -11797,12 +11797,12 @@ a:focus {
         vertical-align: 0;
         border: 0;
         font-weight: 900;
-        content: '▲';
+        content: '▼';
         font-family: 'Font Awesome 5 Free';
     }
 
     .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
-        content: '▼';
+        content: '▲';
     }
 
     .sidebar .sidebar-brand .sidebar-brand-icon i {
