@@ -1,47 +1,75 @@
+<!-- Signup container START -->
 <div class="container">
-
     <div class="card bg-dark o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <div class="row">
                 <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
                 <div class="col-lg-7">
                     <div class="p-5">
+                        <!-- Signup title -->
                         <div class="text-center">
                             <h1 class="h4 mb-4">Create an Account!</h1>
                         </div>
-                        <form class="user">
+
+                        <!-- Signup form START -->
+                        <form class="user" [formGroup]="signupForm" (ngSubmit)="register()">
+
+                            <!-- Name inputs -->
                             <div class="form-group row">
+                                <!-- First name -->
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user bg-light" id="FirstName"
-                                        placeholder="First Name" required>
+                                        formControlName="firstname" placeholder="First Name" required>
                                 </div>
+                                <!-- Last name -->
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control form-control-user  bg-light" id="LastName"
-                                        placeholder="Last Name" required>
+                                        formControlName="lastname" placeholder="Last Name" required>
                                 </div>
                             </div>
+
+                            <!-- Email input -->
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user  bg-light" id="InputEmail"
-                                    placeholder="Email Address" required>
+                                <input [email]="true" type="email" class="form-control form-control-user  bg-light"
+                                    id="InputEmail" formControlName="email" placeholder="Email Address" required>
                             </div>
+
+                            <!-- Username input START -->
                             <div class="form-group">
-                                <input type="username" class="form-control form-control-user  bg-light" id="InputUsername"
-                                    placeholder="Username" required>
+                                <input [maxlength]="20" type="username" class="form-control form-control-user  bg-light"
+                                    formControlName="username" id="InputUsername" placeholder="Username" required>
                             </div>
+
+                            <!-- Password inputs -->
                             <div class="form-group row">
+                                <!-- Password -->
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user  bg-light"
-                                        id="exampleInputPassword" placeholder="Password" required>
+                                        formControlName="password" id="InputPassword" placeholder="Password"
+                                        required>
                                 </div>
+                                <!-- Confirm Password -->
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user  bg-light"
-                                        id="exampleRepeatPassword" placeholder="Repeat Password" required>
+                                        formControlName="confirmPassword" id="RepeatPassword"
+                                        placeholder="Repeat Password" required>
                                 </div>
                             </div>
+
+                            <!-- Appears if passwords are incorrect -->
+                            <div *ngIf="passMatch === false" class="text-center">
+                                <i>
+                                    <p id="pass-error">* Passwords don't match</p>
+                                </i>
+                            </div>
+
+                            <!-- Register button -->
                             <button class="btn btn-secondary btn-user btn-block" type="submit">
                                 Register Account
                             </button>
                         </form>
+                        <!-- Signup form END -->
+
                         <hr>
                         <div class="text-center">
                             <a class="small" href="login">Already have an account? Login!</a>
@@ -51,18 +79,27 @@
             </div>
         </div>
     </div>
-<!-- 
-<div class="container">
-    <h1>Signup test</h1>
+</div>
+<!-- Signup container END -->
 
-    <div class="signup-container">
-        <form>
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" id="">
-                <label>Password</label>
-                <input type="password" name="password" id="">
-            </div>
-        </form>
-    </div>
-</div> -->
+
+<!-- 
+    <div class="container">
+        <h1>Signup test</h1>
+
+        <div class="signup-container">
+            <form>
+                <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input formControlName="username" class="form-control" type="text" name="username" id="">
+                        <label class="form-label">Email</label>
+                        <input formControlName="email" class="form-control" type="text" name="password" id="">
+                        <label class="form-label">Password</label>
+                        <input formControlName="password" class="form-control" type="password" name="password" id="">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Sign Up</button>
+                </form>
+            </form>
+        </div>
+    </div> -->

@@ -1,3 +1,8 @@
 .card {
     margin-top: 10% !important;
 }
+
+#pass-error {
+    font-size: small;
+    color: rgb(219, 24, 24);
+}
