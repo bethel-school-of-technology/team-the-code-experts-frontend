@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgToastModule } from 'ng-angular-popup';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -36,6 +37,7 @@ import { PostInputComponent } from './components/post-input/post-input.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

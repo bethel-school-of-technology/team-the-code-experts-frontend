@@ -6407,6 +6407,38 @@ a.close.disabled {
     pointer-events: none;
 }
 
+/* Toast styling */
+/* Success */
+.success {
+    margin-top: 2em !important;
+    background-color: #bbcebf !important;
+    border-left: 5px solid #bbcebf !important;
+    width: auto !important;
+}
+.fa-check-circle {
+    opacity: 0 !important;
+    width: 0px !important;
+    height: 0px !important;
+}
+
+/* Warning */
+.warning {
+    margin-top: 2em !important;
+    background-color: #e4b7b7 !important;
+    border-left: 5px solid #e4b7b7 !important;
+    width: auto !important;
+}
+.fa-exclamation-circle {
+    opacity: 0 !important;
+    width: 0px !important;
+    height: 0px !important;
+}
+
+
+button#close {
+    padding-left: 0.9em !important;
+}
+
 .toast {
     flex-basis: 350px;
     max-width: 350px;
