@@ -1,0 +1,7 @@
+#posts {
+    margin: 0 auto;
+}
+.vote {
+    display: flex;
+    text-align: center;
+}

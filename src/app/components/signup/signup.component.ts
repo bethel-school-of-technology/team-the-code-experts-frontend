@@ -37,15 +37,16 @@ export class SignupComponent implements OnInit {
     };
 
     // Register user
-    this.http.post<any>('http://localhost:3000/register', // Mock JSON server
+    this.http.post<any>('http://localhost:3000/Identity/Account/Register', // Mock JSON server
       {
         Name: this.signupForm.value.firstname + " " + this.signupForm.value.lastname,
         Email: this.signupForm.value.email,
-        Username: this.signupForm.value.username,
-        Password: this.signupForm.value.password
+        Password: this.signupForm.value.password,
+        ConfirmPassword: this.signupForm.value.password
       }
     )
       .subscribe(res => {
+        console.log(res)
         try {
           alert('Signup Successful');
           this.signupForm.reset();

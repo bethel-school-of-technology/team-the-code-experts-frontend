@@ -13,6 +13,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { NavBarMobileComponent } from './components/nav/nav-bar-mobile/nav-bar-mobile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostComponent } from './components/post/post.component';
+import { PostInputComponent } from './components/post-input/post-input.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,16 @@ import { HttpClientModule } from '@angular/common/http';
     FeedComponent,
     ErrorComponent,
     NavBarMobileComponent,
-    FooterComponent
+    FooterComponent,
+    PostComponent,
+    PostInputComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

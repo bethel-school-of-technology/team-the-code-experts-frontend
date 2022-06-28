@@ -69,10 +69,10 @@
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Nav Item - Signed in as -->
-    <li id="user" class="nav-item btn-xsm bg-orange">
-        <a class="nav-link" href="/home">
+    <li id="user" class="nav-item">
+        <button class="nav-link btn-xsm bg-orange" type="button" data-toggle="modal" data-target="#post-modal">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Broadcast something</span></a>
+            <span>Broadcast Something</span></button>
     </li>
 
     <!-- Divider -->
@@ -86,3 +86,10 @@
     </li>
 </ul>
 <!-- End of Sidebar -->
+
+<!-- Start of Post Modal -->
+
+<app-post-input class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="postModalLable"
+    aria-hidden="true"></app-post-input>
+
+<!-- End of Post Modal -->

@@ -1,8 +1,10 @@
 @media screen and (min-width: 815px) {
+
     /* Show mobile nav bar when a device smaller than an iPad is used */
     #mobile-nav {
         display: none !important;
     }
+
     /* Move feed to adjust for sidebar */
     #feed {
         padding-left: 17em;
@@ -10,6 +12,7 @@
 }
 
 @media screen and (max-width: 815px) {
+
     /* Hide sidebar for mobile */
     #sidebar {
         display: none !important;
@@ -19,22 +22,27 @@
 #mobile-nav {
     overflow: visible;
     position: sticky;
+    z-index: 20;
     bottom: 0;
     width: 100%;
 }
 
 #nav {
-    overflow: hidden;
+    display: block;
+    z-index: 15;
+    overflow: visible;
     position: sticky;
     top: 0;
     width: 100%;
 }
 
 #sidebar {
+    display: flex;
+    flex: -1;
     height: 100%;
     width: 17em;
     position: fixed;
-    z-index: 0;
+    z-index: 10;
     top: -1;
     left: 0;
     overflow-x: hidden;
