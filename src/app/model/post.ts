@@ -1,7 +1,7 @@
 export class Post {
-    username: string;
-    fullname: string;
-    title: string;
-    content: string;
-    timestamp: string;
+    // username: string;
+    // fullname: string;
+    Title: string;
+    Body: string;
+    // timestamp: string;
 }

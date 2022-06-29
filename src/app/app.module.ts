@@ -1,8 +1,10 @@
+/* Import Modules */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgToastModule } from 'ng-angular-popup';
 
+/* Import Components */
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav-bar/nav.component';
@@ -18,7 +20,7 @@ import { PostComponent } from './components/post/post.component';
 import { PostInputComponent } from './components/post-input/post-input.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ // Components
     AppComponent,
     HomeComponent,
     NavComponent,
@@ -31,7 +33,7 @@ import { PostInputComponent } from './components/post-input/post-input.component
     PostComponent,
     PostInputComponent,
   ],
-  imports: [
+  imports: [ // Modules
     BrowserModule,
     AppRoutingModule,
     FormsModule,

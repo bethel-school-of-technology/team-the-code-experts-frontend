@@ -9,7 +9,7 @@
         <div class="modal-body">
             <form class="post" [formGroup]="postForm" (ngSubmit)="post()">
                 <div class="form-group">
-                    <input
+                    <input (keydown.enter)="handleKeyEnter($event)"
                         [ngStyle]="{'border': (postForm.controls['postTitle'].dirty && postForm.hasError('required', 'postTitle') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
                         type="text" class="form-control" id="PostTitle" formControlName="postTitle"
                         placeholder="Post Title" required>
@@ -26,10 +26,13 @@
                         *ngIf="postForm.controls['postBody'].dirty && postForm.hasError('required', 'postBody')"></span>
                 </div>
             </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary text-gray-100" data-dismiss="modal">Close</button>
-            <button [disabled]="!postForm.valid" (click)="post()" type="button" class="btn bg-orange text-gray-100" data-dismiss="modal">Post</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary text-gray-100" data-dismiss="modal">Close</button>
+                <span *ngIf="postForm.valid" (document:keydown.meta.enter)="post()"
+                    (document:keydown.control.enter)="post()"  data-dismiss="modal"></span>
+                <button [disabled]="!postForm.valid" (click)="post()" type="button" class="btn bg-orange text-gray-100"
+                    data-dismiss="modal">Post</button>
+            </div>
         </div>
     </div>
 </div>

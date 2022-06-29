@@ -9,11 +9,11 @@
                         <div class="post-head row">
                             <div class="col">
                                 <div class="h5 mb-0 font-weight-bold text-white">
-                                    {{post.title}}
+                                    {{post.Title}}
                                 </div>
-                                <a [href]="post.username" class="post-author font-weight-bold text-white mb-1">
+                                <!-- <a [href]="post.username" class="post-author font-weight-bold text-white mb-1">
                                     {{post.username}} // {{post.fullname}}
-                                </a>
+                                </a> -->
                             </div>
                             <div class="col-lg-1">
                                 <img src="../../../assets/flag.svg" width="30" alt="">
@@ -21,7 +21,7 @@
                         </div>
                         <hr class="post-divider">
                         <p class="mb-0 text-white">
-                            {{post.content}}
+                            {{post.Body}}
                         </p>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    {{post.timestamp}}
+                    <!-- {{post.timestamp}} -->
                 </div>
             </div>
         </div>

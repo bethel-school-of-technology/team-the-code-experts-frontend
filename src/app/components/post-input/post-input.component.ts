@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -7,11 +7,11 @@ import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-post-input',
   templateUrl: './post-input.component.html',
-  styleUrls: ['./post-input.component.css']
+  styleUrls: ['./post-input.component.css'],
 })
 export class PostInputComponent implements OnInit {
-  public postForm !: FormGroup;
 
+  public postForm !: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder, // Build private form
@@ -19,7 +19,6 @@ export class PostInputComponent implements OnInit {
     private router: Router, // Build private router
     private toast: NgToastService, // Add toast service
   ) { }
-
 
   ngOnInit(): void {
     this.postForm = this.formBuilder.group({ // Initiate form
@@ -40,7 +39,7 @@ export class PostInputComponent implements OnInit {
         console.log(res)
         try {
           this.postForm.reset();
-          this.router.navigate(['home'])
+          this.reloadComponent();
           this.toast.success({
             detail: "Success!",
             summary: "Post was successful!",
@@ -54,5 +53,16 @@ export class PostInputComponent implements OnInit {
           })
         }
       })
+  };
+
+  reloadComponent() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  };
+
+  handleKeyEnter(event) {
+    event.preventDefault();
   }
 }
