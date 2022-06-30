@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   public signupForm !: FormGroup; // Create signup form
   passMatch = true; // Check if passwords match
+  userExists = false; // Check if username already exists
 
   constructor(
     private formBuilder: FormBuilder, // Build private form
@@ -37,7 +38,7 @@ export class SignupComponent implements OnInit {
     };
 
     // Register user
-    this.http.post<any>('http://localhost:3000/user/register', // Mock JSON server
+    this.http.post<any>('http://localhost:3000/user/register', // Mock server
       {
         Firstname: this.signupForm.value.firstname,
         Lastname: this.signupForm.value.lastname,
@@ -47,13 +48,15 @@ export class SignupComponent implements OnInit {
       }
     )
       .subscribe(res => {
-        console.log(res)
-        try {
-          alert('Signup Successful');
+        console.log(res.status)
+
+        if (res.status === 201) {
+          // If user was created
           this.signupForm.reset();
           this.router.navigate(['home'])
-        } catch (error) {
-          alert('Something went wrong :/')
+        } else if (res.status === 409) {
+          // If user already exists
+          this.userExists = true;
         }
       })
   }

@@ -42,8 +42,8 @@
                             <div class="form-group">
                                 <input
                                     [ngStyle]="{'border': (signupForm.controls['email'].dirty && signupForm.hasError('required', 'email') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
-                                    [email]="true" type="email" class="form-control bg-light"
-                                    id="InputEmail" formControlName="email" placeholder="Email Address" required>
+                                    [email]="true" type="email" class="form-control bg-light" id="InputEmail"
+                                    formControlName="email" placeholder="Email Address" required>
                                 <!-- Check if input is valid -->
                                 <span
                                     *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required', 'email')"></span>
@@ -58,6 +58,11 @@
                                     [ngStyle]="{'border': (signupForm.controls['username'].dirty && signupForm.hasError('required', 'username') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
                                     [maxlength]="20" type="username" class="form-control bg-light"
                                     formControlName="username" id="InputUsername" placeholder="Username" required>
+                                <div *ngIf="userExists === true" class="text-center">
+                                    <i>
+                                        <p class="input-error">*Username already exists</p>
+                                    </i>
+                                </div>
                                 <span
                                     *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required', 'username')"></span>
                             </div>
@@ -68,8 +73,8 @@
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input
                                         [ngStyle]="{'border': (signupForm.controls['password'].dirty && signupForm.hasError('required', 'password') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
-                                        type="password" class="form-control bg-light"
-                                        formControlName="password" id="InputPassword" placeholder="Password" required>
+                                        type="password" class="form-control bg-light" formControlName="password"
+                                        id="InputPassword" placeholder="Password" required>
                                     <!-- Check if input is valid -->
                                     <span
                                         *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required', 'password')"></span>
@@ -78,9 +83,8 @@
                                 <div class="col-sm-6">
                                     <input
                                         [ngStyle]="{'border': (signupForm.controls['confirmPassword'].dirty && signupForm.hasError('required', 'confirmPassword') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
-                                        type="password" class="form-control bg-light"
-                                        formControlName="confirmPassword" id="RepeatPassword"
-                                        placeholder="Repeat Password" required>
+                                        type="password" class="form-control bg-light" formControlName="confirmPassword"
+                                        id="RepeatPassword" placeholder="Repeat Password" required>
                                     <!-- Check if input is valid -->
                                     <span
                                         *ngIf="signupForm.controls['confirmPassword'].dirty && signupForm.hasError('required', 'confirmPassword')"></span>
@@ -95,8 +99,7 @@
                             </div>
 
                             <!-- Register button -->
-                            <button [disabled]="!signupForm.valid"
-                                class="btn btn-secondary btn-block" type="submit">
+                            <button [disabled]="!signupForm.valid" class="btn btn-secondary btn-block" type="submit">
                                 Register Account
                             </button>
                         </form>
