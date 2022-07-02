@@ -16,8 +16,11 @@ import { ErrorComponent } from './components/error/error.component';
 import { NavBarMobileComponent } from './components/nav/nav-bar-mobile/nav-bar-mobile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PostComponent } from './components/post/post.component';
-import { PostInputComponent } from './components/post-input/post-input.component';
+import { PostComponent } from './components/home/feed/post/post.component';
+import { PostInputComponent } from './components/home/post-input/post-input.component';
+
+/* Import Providers  */
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [ // Components
@@ -41,7 +44,7 @@ import { PostInputComponent } from './components/post-input/post-input.component
     HttpClientModule,
     NgToastModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

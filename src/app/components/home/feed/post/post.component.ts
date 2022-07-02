@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, timestamp } from 'rxjs';
 import { PostsService } from 'src/app/services/posts.service';
-import { Post } from 'src/app/model/post';
+import { Post } from 'src/app/models/post';
 
 @Component({
   selector: 'app-post',

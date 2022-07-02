@@ -18,4 +18,14 @@ export class PostsService {
     return this.http.get<any>(url);
   }
 
+  public createPost(): Observable<any> {
+    const url = 'http://localhost:3000/posts';
+    return this.http.post<any>(url,
+      {
+        Title: "Title",
+        Body: "Body"
+      }
+    );
+  }
+
 }

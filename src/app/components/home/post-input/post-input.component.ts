@@ -33,6 +33,9 @@ export class PostInputComponent implements OnInit {
       {
         Title: this.postForm.value.postTitle,
         Body: this.postForm.value.postBody,
+      },
+      {
+        withCredentials: true
       }
     )
       .subscribe(async (res) => {

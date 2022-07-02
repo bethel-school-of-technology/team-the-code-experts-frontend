@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder, // Build private form
     private http: HttpClient, // Build private HTTP client
-    private router: Router // Build private router
+    private router: Router, // Build private router
+    private cookieService: CookieService, // Create Cookie Service
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,8 @@ export class SignupComponent implements OnInit {
   }
 
   register(): any { // Runs when user clicks "Register Account" button
+    this.userExists = false; // set default
+    this.passMatch = true; // set default
 
     // Make sure passwords match
     if (this.signupForm.value.password !== this.signupForm.value.confirmPassword) {
@@ -45,18 +49,21 @@ export class SignupComponent implements OnInit {
         Username: this.signupForm.value.username,
         Email: this.signupForm.value.email,
         Password: this.signupForm.value.password,
+      },
+      {
+        withCredentials: true
       }
     )
       .subscribe(res => {
-        console.log(res.status)
+        console.log(res)
 
         if (res.status === 201) {
           // If user was created
-          this.signupForm.reset();
-          this.router.navigate(['home'])
+          this.signupForm.reset(); // Clear form
+          this.router.navigate(['home']) // Re-direct to home
         } else if (res.status === 409) {
           // If user already exists
-          this.userExists = true;
+          this.userExists = true; // Display error message
         }
       })
   }

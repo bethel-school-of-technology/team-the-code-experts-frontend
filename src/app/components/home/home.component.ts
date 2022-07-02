@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  user: any = "";
+  constructor(
+    private http: HttpClient, // Create HTTP client
+    private router: Router, // Build private router
+  ) { }
 
   ngOnInit(): void {
+    this.http.get<any>('http://localhost:3000/user', { withCredentials: true })
+      .subscribe(
+        (res: any) => {
+          if (!res.Username) this.router.navigate(['signup']) // Re-direct to signup page
+          this.user = res.Username;
+        }, err => { });
   }
 
 }

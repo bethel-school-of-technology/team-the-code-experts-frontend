@@ -14,6 +14,20 @@
                         <!-- Signup form START -->
                         <form class="user" [formGroup]="signupForm" (ngSubmit)="register()">
 
+                            <!-- Appears if passwords are incorrect -->
+                            <div *ngIf="passMatch === false" class="text-center">
+                                <i>
+                                    <p class="input-error">*Passwords don't match</p>
+                                </i>
+                            </div>
+
+                            <!-- Appears if username already exists -->
+                            <div *ngIf="userExists === true" class="text-center">
+                                <i>
+                                    <p class="input-error">*Username already exists</p>
+                                </i>
+                            </div>
+
                             <!-- Name inputs -->
                             <div class="form-group row">
                                 <!-- First name -->
@@ -58,11 +72,7 @@
                                     [ngStyle]="{'border': (signupForm.controls['username'].dirty && signupForm.hasError('required', 'username') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
                                     [maxlength]="20" type="username" class="form-control bg-light"
                                     formControlName="username" id="InputUsername" placeholder="Username" required>
-                                <div *ngIf="userExists === true" class="text-center">
-                                    <i>
-                                        <p class="input-error">*Username already exists</p>
-                                    </i>
-                                </div>
+
                                 <span
                                     *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required', 'username')"></span>
                             </div>
@@ -89,13 +99,6 @@
                                     <span
                                         *ngIf="signupForm.controls['confirmPassword'].dirty && signupForm.hasError('required', 'confirmPassword')"></span>
                                 </div>
-                            </div>
-
-                            <!-- Appears if passwords are incorrect -->
-                            <div *ngIf="passMatch === false" class="text-center">
-                                <i>
-                                    <p class="input-error">*Passwords don't match</p>
-                                </i>
                             </div>
 
                             <!-- Register button -->

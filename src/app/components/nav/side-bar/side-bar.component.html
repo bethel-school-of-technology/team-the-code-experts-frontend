@@ -19,7 +19,7 @@
 
     <!-- Nav Item - Feed -->
     <li class="nav-item">
-        <a class="nav-link" href="/home">
+        <a class="nav-link" routerLink="/home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Feed</span></a>
     </li>
@@ -29,7 +29,7 @@
 
     <!-- Nav Item - Explore -->
     <li class="nav-item">
-        <a class="nav-link" href="/home">
+        <a class="nav-link" routerLink="/home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Explore</span></a>
     </li>
@@ -39,7 +39,7 @@
 
     <!-- Nav Item - Profile -->
     <li class="nav-item">
-        <a class="nav-link" href="/profile">
+        <a class="nav-link" routerLink="/profile">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Profile</span></a>
     </li>
@@ -60,7 +60,7 @@
                 <a class="collapse-item" href="utilities-color.html">Username</a>
                 <a class="collapse-item" href="utilities-border.html">Email</a>
                 <a class="collapse-item" href="utilities-animation.html">Password</a>
-                <a class="collapse-item" href="utilities-other.html">Sign out</a>
+                <a class="collapse-item" (click)="signOut()">Sign out</a>
             </div>
         </div>
     </li>
@@ -82,7 +82,7 @@
     <li id="user" class="nav-item">
         <a class="nav-link">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Signed in as: {{user.username}}</span></a>
+            <span>Signed in as: {{user}}</span></a>
     </li>
 </ul>
 <!-- End of Sidebar -->

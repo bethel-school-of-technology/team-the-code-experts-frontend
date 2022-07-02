@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Error } from 'src/app/model/error';
+import { Error } from 'src/app/models/error';
 
 @Component({
   selector: 'app-error',
