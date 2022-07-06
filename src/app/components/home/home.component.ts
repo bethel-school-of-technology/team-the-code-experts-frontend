@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:3000/user', { withCredentials: true })
+    this.http.get<any>('http://localhost:4000/api/messages')
       .subscribe(
         (res: any) => {
           if (res.status === 401) this.router.navigate(['signup']) // Re-direct to signup page

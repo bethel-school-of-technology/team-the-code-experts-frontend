@@ -42,26 +42,22 @@ export class SignupComponent implements OnInit {
     };
 
     // Register user
-    this.http.post<any>('http://localhost:3000/user/register', // Mock server
+    this.http.post<any>('http://localhost:4000/api/users/register', // Mock server
       {
         Firstname: this.signupForm.value.firstname,
         Lastname: this.signupForm.value.lastname,
-        Username: this.signupForm.value.username,
         Email: this.signupForm.value.email,
+        Username: this.signupForm.value.username,
         Password: this.signupForm.value.password,
-      },
-      {
-        withCredentials: true
       }
     )
       .subscribe(res => {
         console.log(res)
-
-        if (res.status === 201) {
+        if (res.message === 'Registration successful') {
           // If user was created
           this.signupForm.reset(); // Clear form
           this.router.navigate(['home']) // Re-direct to home
-        } else if (res.status === 409) {
+        } else if (res.message === '400') {
           // If user already exists
           this.userExists = true; // Display error message
         }
