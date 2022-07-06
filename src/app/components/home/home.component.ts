@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  user: any = "";
+  user: any = null;
   constructor(
     private http: HttpClient, // Create HTTP client
     private router: Router, // Build private router
@@ -19,9 +19,11 @@ export class HomeComponent implements OnInit {
     this.http.get<any>('http://localhost:3000/user', { withCredentials: true })
       .subscribe(
         (res: any) => {
-          if (!res.Username) this.router.navigate(['signup']) // Re-direct to signup page
+          if (res.status === 401) this.router.navigate(['signup']) // Re-direct to signup page
           this.user = res.Username;
-        }, err => { });
+        }, err => {
+          this.router.navigate(['signup']) // Re-direct to signup page
+        });
   }
 
 }
