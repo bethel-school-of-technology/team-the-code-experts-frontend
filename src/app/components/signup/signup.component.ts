@@ -57,7 +57,7 @@ export class SignupComponent implements OnInit {
           // If user was created
           this.signupForm.reset(); // Clear form
           this.router.navigate(['home']) // Re-direct to home
-        } else if (res.message === '400') {
+        } else {
           // If user already exists
           this.userExists = true; // Display error message
         }

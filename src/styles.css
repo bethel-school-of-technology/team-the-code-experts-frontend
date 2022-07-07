@@ -5308,7 +5308,7 @@ input[type="button"].btn-block {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
     background-color: #f8f9fc;
-    border-bottom: 1px solid #e3e6f0;
+    border-bottom: 1px solid #77767c;
 }
 
 .card-header:first-child {
@@ -5317,8 +5317,8 @@ input[type="button"].btn-block {
 
 .card-footer {
     padding: 0.75rem 1.25rem;
-    background-color: #f8f9fc;
-    border-top: 1px solid #e3e6f0;
+    background-color: var(--background-mid);
+    border-top: 1px solid #77767c;
 }
 
 .card-footer:last-child {
@@ -12378,7 +12378,7 @@ hr.post-divider {
     font-weight: 900;
     content: '\f107';
     font-family: 'Font Awesome 5 Free';
-    color: #d1d3e2;
+    color: #d9dae3;
 }
 
 .card .card-header[data-toggle="collapse"].collapsed {

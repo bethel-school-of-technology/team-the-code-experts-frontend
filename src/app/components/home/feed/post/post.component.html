@@ -1,54 +1,53 @@
-<div class="posts">
-    <h1 class="font-weignt-bold text-uppercase">Recent Broadcasts</h1>
+<div class="posts justify-content-center">
     <!-- Post Card -->
-    <div *ngFor="let post of posts" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mb-4">
-        <div class="card border-left-post shadow h-100 py-2 bg-mid">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="post-head row">
-                            <div class="col">
-                                <div class="h5 mb-0 font-weight-bold text-white">
-                                    {{post.Title}}
-                                </div>
-                                <!-- <a [href]="post.username" class="post-author font-weight-bold text-white mb-1">
-                                    {{post.username}} // {{post.fullname}}
-                                </a> -->
-                            </div>
-                            <div class="col-lg-1">
-                                <img src="../../../assets/flag.svg" width="30" alt="">
-                            </div>
-                        </div>
-                        <hr class="post-divider">
-                        <p class="mb-0 text-white">
-                            {{post.Body}}
-                        </p>
+    <div class="buffer"></div>
+
+    <div *ngFor="let post of posts" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mb-4 mx-auto">
+        <div class="card h-100 bg-mid shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold">{{post.Title}}</h6>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <div class="text-gray-400">⠇</div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow bg-light animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Post Options:</div>
+                        <a class="dropdown-item" href="#">Flag</a>
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Share</a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer bg-dark">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="row vote">
-                        <div class="col-lg-1">
-                            <img src="../../../assets/upvote.svg" alt="">
-                        </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                {{post.Body}}
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="row vote">
+                            <div class="col-lg-1">
+                                <img src="../../../assets/upvote.svg" alt="">
+                            </div>
 
-                        <div class="col-lg-1">
-                            <img src="../../../assets/downvote.svg" alt="">
+                            <div class="col-lg-1">
+                                <img src="../../../assets/downvote.svg" alt="">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-8">
-                    <!-- {{post.timestamp}} -->
+                    <div class="col-lg-8">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- No posts -->
-    <div *ngIf="!posts" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mb-4">
+    <!-- <div *ngIf="!posts" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mb-4">
         <div class="card border-left-post shadow h-100 py-2 bg-mid">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -58,9 +57,6 @@
                                 <div class="h5 mb-0 font-weight-bold text-white">
                                     No posts found :/
                                 </div>
-                                <!-- <a [href]="post.username" class="post-author font-weight-bold text-white mb-1">
-                                    {{post.username}} // {{post.fullname}}
-                                </a> -->
                             </div>
                             <div class="col-lg-1">
                                 <img src="../../../assets/flag.svg" width="30" alt="">
@@ -88,10 +84,54 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <!-- {{post.timestamp}} -->
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Card Start -->
+    <div *ngIf="!posts" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
+        <div class="card h-100 bg-mid shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold">No posts found :/</h6>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <div class="text-gray-400">⠇</div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow bg-light animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Post Options:</div>
+                        <a class="dropdown-item" href="#">Flag</a>
+                        <a class="dropdown-item" href="#">Edit</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Share</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                Check <a href="/explore">the explore page</a>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="row vote">
+                            <div class="col-lg-1">
+                                <img src="../../../assets/upvote.svg" alt="">
+                            </div>
+
+                            <div class="col-lg-1">
+                                <img src="../../../assets/downvote.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- Card End -->
 </div>
