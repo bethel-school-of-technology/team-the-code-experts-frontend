@@ -94,7 +94,7 @@
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold">No posts found :/</h6>
+                <h6 class="m-0 font-weight-bold" [innerHtml]="noPostsMessage"></h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -112,7 +112,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                Check <a href="/explore">the explore page</a>
+                Check <a href="/explore">the explore page</a> to find people to follow!
             </div>
             <div class="card-footer">
                 <div class="row">
