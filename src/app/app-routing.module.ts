@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ErrorComponent } from './components/error/error.component';
+import { ExploreComponent } from './components/explore/explore.component';
 
 const routes: Routes = [
   { // Default page is home
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'explore',
+    component: ExploreComponent
   },
   {
     path: 'signup',
