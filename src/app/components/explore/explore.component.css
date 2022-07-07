@@ -1,4 +1,4 @@
-@media screen and (min-width: 815px) {
+@media screen and (min-width: 770px) {
 
     /* Show mobile nav bar when a device smaller than an iPad is used */
     #mobile-nav {
@@ -11,7 +11,7 @@
     }
 }
 
-@media screen and (max-width: 815px) {
+@media screen and (max-width: 770px) {
 
     /* Hide sidebar for mobile */
     #sidebar {
@@ -21,7 +21,7 @@
 
 #mobile-nav {
     overflow: visible;
-    position: sticky;
+    position: absolute;
     z-index: 20;
     bottom: 0;
     width: 100%;
