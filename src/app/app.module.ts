@@ -19,6 +19,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './components/feed/post/post.component';
 import { PostInputComponent } from './components/home/post-input/post-input.component';
 import { ExploreComponent } from './components/explore/explore.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
+import { ChangeUsernameComponent } from './components/settings/change-username/change-username.component';
+import { DeleteAccountComponent } from './components/settings/delete-account/delete-account.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [ // Components
@@ -34,6 +40,12 @@ import { ExploreComponent } from './components/explore/explore.component';
     PostComponent,
     PostInputComponent,
     ExploreComponent,
+    SettingsComponent,
+    ProfileComponent,
+    ChangePasswordComponent,
+    ChangeUsernameComponent,
+    DeleteAccountComponent,
+    LoginComponent,
   ],
   imports: [ // Modules
     BrowserModule,

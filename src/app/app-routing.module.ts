@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ExploreComponent } from './components/explore/explore.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { // Default page is home
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'explore',
     component: ExploreComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'signup',
