@@ -1,0 +1,95 @@
+<!-- Sidebar -->
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Broadcast</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+    <!-- Nav Item - Feed -->
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/home">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Home</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Explore -->
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/explore">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Explore</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Profile -->
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/profile">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Profile</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Settings Collapse Menu FILLER ITEMS -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings"
+            aria-expanded="true" aria-controls="collapseSettings">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Settings</span>
+        </a>
+        <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
+            <div class="bg-light py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Settings:</h6>
+                <a class="collapse-item" href="utilities-color.html">Username</a>
+                <a class="collapse-item" href="utilities-border.html">Email</a>
+                <a class="collapse-item" href="utilities-animation.html">Password</a>
+                <a class="collapse-item" (click)="signOut()">Sign out</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Signed in as -->
+    <li id="user" class="nav-item">
+        <button class="nav-link btn-xsm bg-orange" type="button" data-toggle="modal" data-target="#post-modal">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Broadcast Something</span></button>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Signed in as -->
+    <li id="user" class="nav-item">
+        <a class="nav-link">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Signed in as: {{user}}</span></a>
+    </li>
+</ul>
+<!-- End of Sidebar -->
+
+<!-- Start of Post Modal -->
+
+<app-post-input class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="postModalLable"
+    aria-hidden="true"></app-post-input>
+
+<!-- End of Post Modal -->

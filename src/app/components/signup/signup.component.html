@@ -1,0 +1,143 @@
+<!-- Signup container START -->
+<div class="container">
+    <div class="card bg-dark o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <!-- Signup title -->
+                        <div class="text-center">
+                            <h1 class="h4 mb-4">Create an Account!</h1>
+                        </div>
+
+                        <!-- Signup form START -->
+                        <form class="user" [formGroup]="signupForm" (ngSubmit)="register()">
+
+                            <!-- Appears if passwords are incorrect -->
+                            <div *ngIf="passMatch === false" class="text-center">
+                                <i>
+                                    <p class="input-error">*Passwords don't match</p>
+                                </i>
+                            </div>
+
+                            <!-- Appears if username already exists -->
+                            <div *ngIf="userExists === true" class="text-center">
+                                <i>
+                                    <p class="input-error">*Username already exists</p>
+                                </i>
+                            </div>
+
+                            <!-- Name inputs -->
+                            <div class="form-group row">
+                                <!-- First name -->
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input
+                                        [ngStyle]="{'border': (signupForm.controls['firstname'].dirty && signupForm.hasError('required', 'firstname') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                                        type="text" class="form-control bg-light" id="FirstName"
+                                        formControlName="firstname" placeholder="First Name" required>
+                                    <!-- Check if input is valid -->
+                                    <span class="input-error"
+                                        *ngIf="signupForm.controls['firstname'].dirty && signupForm.hasError('required', 'firstname')"></span>
+                                </div>
+                                <!-- Last name -->
+                                <div class="col-sm-6">
+                                    <input
+                                        [ngStyle]="{'border': (signupForm.controls['lastname'].dirty && signupForm.hasError('required', 'lastname') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                                        type="text" class="form-control bg-light" id="LastName"
+                                        formControlName="lastname" placeholder="Last Name" required>
+                                    <!-- Check if input is valid -->
+                                    <span class="input-error"
+                                        *ngIf="signupForm.controls['lastname'].dirty && signupForm.hasError('required', 'lastname')"></span>
+                                </div>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-group">
+                                <input
+                                    [ngStyle]="{'border': (signupForm.controls['email'].dirty && signupForm.hasError('required', 'email') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                                    [email]="true" type="email" class="form-control bg-light" id="InputEmail"
+                                    formControlName="email" placeholder="Email Address" required>
+                                <!-- Check if input is valid -->
+                                <span
+                                    *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required', 'email')"></span>
+                            </div>
+
+                            <!-- Username input START -->
+
+                            <div class="form-group">
+                                <span class="glyphicon glyphicon-refresh blue" title="status"> </span>
+
+                                <input
+                                    [ngStyle]="{'border': (signupForm.controls['username'].dirty && signupForm.hasError('required', 'username') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                                    [maxlength]="20" type="username" class="form-control bg-light"
+                                    formControlName="username" id="InputUsername" placeholder="Username" required>
+
+                                <span
+                                    *ngIf="signupForm.controls['username'].dirty && signupForm.hasError('required', 'username')"></span>
+                            </div>
+
+                            <!-- Password inputs -->
+                            <div class="form-group row">
+                                <!-- Password -->
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input
+                                        [ngStyle]="{'border': (signupForm.controls['password'].dirty && signupForm.hasError('required', 'password') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                                        type="password" class="form-control bg-light" formControlName="password"
+                                        id="InputPassword" placeholder="Password" required>
+                                    <!-- Check if input is valid -->
+                                    <span
+                                        *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required', 'password')"></span>
+                                </div>
+                                <!-- Confirm Password -->
+                                <div class="col-sm-6">
+                                    <input
+                                        [ngStyle]="{'border': (signupForm.controls['confirmPassword'].dirty && signupForm.hasError('required', 'confirmPassword') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                                        type="password" class="form-control bg-light" formControlName="confirmPassword"
+                                        id="RepeatPassword" placeholder="Repeat Password" required>
+                                    <!-- Check if input is valid -->
+                                    <span
+                                        *ngIf="signupForm.controls['confirmPassword'].dirty && signupForm.hasError('required', 'confirmPassword')"></span>
+                                </div>
+                            </div>
+
+                            <!-- Register button -->
+                            <button [disabled]="!signupForm.valid" class="btn btn-secondary btn-block" type="submit">
+                                Register Account
+                            </button>
+                        </form>
+                        <!-- Signup form END -->
+
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="login">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Signup container END -->
+
+
+<!-- 
+    <div class="container">
+        <h1>Signup test</h1>
+
+        <div class="signup-container">
+            <form>
+                <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input formControlName="username" class="form-control" type="text" name="username" id="">
+                        <label class="form-label">Email</label>
+                        <input formControlName="email" class="form-control" type="text" name="password" id="">
+                        <label class="form-label">Password</label>
+                        <input formControlName="password" class="form-control" type="password" name="password" id="">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Sign Up</button>
+                </form>
+            </form>
+        </div>
+    </div> -->
