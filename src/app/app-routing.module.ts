@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ErrorComponent } from './components/error/error.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { ExploreComponent } from './components/explore/explore.component';
 
 const routes: Routes = [
@@ -18,8 +20,16 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'explore',
+    path: "profile",
+    component: ProfileComponent
+  },
+  {
+    path: "explore",
     component: ExploreComponent
+  },
+  {
+    path: "settings",
+    component: SettingsComponent
   },
   {
     path: 'signup',

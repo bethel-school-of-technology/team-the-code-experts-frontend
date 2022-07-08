@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './components/feed/post/post.component';
 import { PostInputComponent } from './components/home/post-input/post-input.component';
 import { ExploreComponent } from './components/explore/explore.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [ // Components
@@ -34,6 +36,8 @@ import { ExploreComponent } from './components/explore/explore.component';
     PostComponent,
     PostInputComponent,
     ExploreComponent,
+    SettingsComponent,
+    ProfileComponent,
   ],
   imports: [ // Modules
     BrowserModule,
