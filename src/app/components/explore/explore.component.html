@@ -1,27 +1,27 @@
+<!-- 
+    Home page. Elements such as the nav bar, or feed, will be added to this
+ -->
 
-
-     <div>
-
+<div>
+    <!-- Top nav bars -->
     <div id="nav">
         <div>
             <app-nav class="nav navbar-expand-lg"></app-nav>
         </div>
     </div>
 
-
+    <!-- Side bar -->
     <div id="sidebar" class="bg-mid">
         <app-side-bar></app-side-bar>
     </div>
 
-
+    <!-- Feed -->
     <div id="feed">
         <app-feed [feedType]="type"></app-feed>
     </div>
 
-
+    <!-- Mobile nav bar -->
     <div id="mobile-nav">
         <app-nav-bar-mobile></app-nav-bar-mobile>
     </div>
 </div>
-
-
