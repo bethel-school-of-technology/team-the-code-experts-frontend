@@ -30,13 +30,8 @@ const routes: Routes = [
     component: ExploreComponent
   },
   {
-<<<<<<< HEAD
     path: "settings",
     component: SettingsComponent
-=======
-    path: 'login',
-    component: LoginComponent
->>>>>>> c38c1c9a0312e0c8bd36114a3a03df68a36fd9a7
   },
   {
     path: 'signup',
