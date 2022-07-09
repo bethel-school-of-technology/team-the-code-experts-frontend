@@ -30,6 +30,10 @@ const routes: Routes = [
     component: ExploreComponent
   },
   {
+    path: "login",
+    component: LoginComponent
+  },
+  {
     path: "settings",
     component: SettingsComponent
   },
@@ -45,7 +49,7 @@ const routes: Routes = [
     path: 'error/:id',
     component: ErrorComponent
   },
-  { // Redirect to 404 if invalid page is entered
+  {  //Redirect to 404 if invalid page is entered
     path: '**',
     redirectTo: 'error/404',
     pathMatch: 'full'

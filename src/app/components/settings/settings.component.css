@@ -3,3 +3,17 @@
         height: 2.5em;
         margin: 0.7em;
     }
+
+
+.btn {
+    color: #1f2024;
+}
+
+.btn:hover {
+    font: italic;
+    color: white;
+}
+
+.settingsItem {
+    background-color: #ff6c14;
+}
