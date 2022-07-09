@@ -55,7 +55,7 @@ export class SignupComponent implements OnInit {
         Password: this.signupForm.value.password,
       }
     ).subscribe(res => {
-      if (res.message === 'Registration successful') { // If user is registered, auto login
+      if (res.token) { // If user is registered, auto login
         this.userService.login(
           {
             Username: this.signupForm.value.username,
