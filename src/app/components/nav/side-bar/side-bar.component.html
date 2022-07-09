@@ -27,6 +27,18 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+
+     <!-- Nav Item - Feed -->
+     <li class="nav-item">
+        <a class="nav-link" href="http://localhost:4200/settings">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Settings</span></a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
     <!-- Nav Item - Explore -->
     <li class="nav-item">
         <a class="nav-link" routerLink="/explore">
@@ -39,13 +51,15 @@
 
     <!-- Nav Item - Profile -->
     <li class="nav-item">
-        <a class="nav-link" routerLink="/profile">
+        <a class="nav-link" href="http://localhost:4200/profile">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Profile</span></a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+    
 
     <!-- Nav Item - Settings Collapse Menu FILLER ITEMS -->
     <li class="nav-item">
@@ -61,6 +75,7 @@
                 <a class="collapse-item" href="utilities-border.html">Email</a>
                 <a class="collapse-item" href="utilities-animation.html">Password</a>
                 <a class="collapse-item" (click)="signOut()">Sign out</a>
+                <a class="collapse-item" href="http://localhost:4200/settings">More Settings</a>
             </div>
         </div>
     </li>
