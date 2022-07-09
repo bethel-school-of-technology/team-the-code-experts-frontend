@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-explore',
@@ -9,20 +10,18 @@ import { Router } from '@angular/router';
 })
 export class ExploreComponent implements OnInit {
   user: any = null;
+  type: number; // 1 = home, 2 = explore
+  
   constructor(
     private http: HttpClient, // Create HTTP client
     private router: Router, // Build private router
+    private authService: AuthService, // Create auth service
   ) { }
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:4000/api/messages')
-      .subscribe(
-        (res: any) => {
-          if (res.status === 401) this.router.navigate(['signup']) // Re-direct to signup page
-          this.user = res.Username;
-        }, err => {
-          this.router.navigate(['signup']) // Re-direct to signup page
-        });
+    this.authService.loginStatus(); // Check if user is logged in, and handle accordingly
+    
+    this.type = 2;
   }
 
 }

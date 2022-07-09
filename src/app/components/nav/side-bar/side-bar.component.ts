@@ -9,22 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-  @Input() public user: any;
+  public user: string;
 
   constructor(
     private http: HttpClient, // Build private HTTP client
     private router: Router, // Build private router
+    private userService: UserService, // Create user service
   ) { }
 
   ngOnInit(): void {
-    this.user
-      ? this.user = this.user
-      : this.user = this.user
+    this.user = this.userService.getUser();
   }
 
   signOut() {
-    this.http.put('http://localhost:3000/user/logout', {}, { withCredentials: true }).subscribe(res => {
-      this.router.navigate(['login']) // Re-direct to login page
-    });
+    this.userService.signOut()
   }
 }

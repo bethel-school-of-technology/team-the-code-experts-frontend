@@ -7,6 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   { // Default page is home
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'goodbye',
+    component: LogoutComponent
   },
   { // Error handling
     path: 'error/:id',
