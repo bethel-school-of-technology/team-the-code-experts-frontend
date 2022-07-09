@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
         console.log(res)
         if (res.token) { // If user gets auto logged in
           this.userService.setToken(res.token) // Add token as cookie
-          this.userService.setUsername(res.token) // Add username as cookie
+          this.userService.setUsername(res.username) // Add username as cookie
           await this.router.navigate(['home']) // Re-direct to home
           this.toast.success({
             detail: "Success!",
