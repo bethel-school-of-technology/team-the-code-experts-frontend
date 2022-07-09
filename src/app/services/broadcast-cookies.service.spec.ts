@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BroadcastCookiesService } from './broadcast-cookies.service';
+import { BroadcastCookieService } from './broadcast-cookies.service';
 
 describe('BroadcastCookiesService', () => {
-  let service: BroadcastCookiesService;
+  let service: BroadcastCookieService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(BroadcastCookiesService);
+    service = TestBed.inject(BroadcastCookieService);
   });
 
   it('should be created', () => {

@@ -23,11 +23,11 @@ export class UserService {
   }
 
   // Login user
-  login(postRequest: any): Observable<any> {
+  public login(postRequest: any): Observable<any> {
     return this.http.post<any>('http://localhost:4000/api/users/authenticate', postRequest);
   }
   // Log out user
-  logout() {
+  public logout() {
     this.BroadcastCookieService.logout();
   }
 
@@ -54,5 +54,13 @@ export class UserService {
       return null; // No token? 👀
     }
   };
+
+  public setToken(token: string) {
+    this.cookieService.set('token', token);
+  }
+
+  public setUsername(username: string) {
+    this.cookieService.set('username', username);
+  }
 
 }

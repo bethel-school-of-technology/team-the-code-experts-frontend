@@ -54,28 +54,29 @@ export class SignupComponent implements OnInit {
         Username: this.signupForm.value.username,
         Password: this.signupForm.value.password,
       }
-    ).subscribe(res => {
-      if (res.token) { // If user is registered, auto login
-        this.userService.login(
-          {
-            Username: this.signupForm.value.username,
-            Password: this.signupForm.value.password
-          }
-        ).subscribe(res => {
-          console.log(res)
-
-          this.signupForm.reset(); // Clear form
-          this.router.navigate(['home']) // Re-direct to home
+    ).subscribe(async (res) => {
+      this.userService.login(
+        {
+          Username: this.signupForm.value.username,
+          Password: this.signupForm.value.password
+        }
+      ).subscribe(async (res) => {
+        console.log(res)
+        if (res.token) { // If user gets auto logged in
+          this.userService.setToken(res.token) // Add token as cookie
+          this.userService.setUsername(res.token) // Add username as cookie
+          await this.router.navigate(['home']) // Re-direct to home
           this.toast.success({
             detail: "Success!",
-            summary: "Welcome to Broadcast!",
+            summary: `Welcome to Broadcast ${this.signupForm.value.username}!`,
             duration: 5000
-          })
-        });
-      } else {
-        // If user already exists
-        this.userExists = true; // Display error message
-      }
+          });
+        }
+        // Still need to add error handling and what not for invalid username/password
+      });
     })
+    // If user already exists
+    // this.userExists = true; // Display error message
+
   }
 }
