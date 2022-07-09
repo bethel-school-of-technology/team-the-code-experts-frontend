@@ -664,6 +664,20 @@ pre code {
 .col-12,
 .col,
 .col-auto,
+.col-xsm-1,
+.col-xsm-2,
+.col-xsm-3,
+.col-xsm-4,
+.col-xsm-5,
+.col-xsm-6,
+.col-xsm-7,
+.col-xsm-8,
+.col-xsm-9,
+.col-xsm-10,
+.col-xsm-11,
+.col-xsm-12,
+.col-xsm,
+.col-xsm-auto,
 .col-sm-1,
 .col-sm-2,
 .col-sm-3,
@@ -981,6 +995,72 @@ pre code {
     .row-cols-sm-6>* {
         flex: 0 0 16.66667%;
         max-width: 16.66667%;
+    }
+
+    .col-xsm-auto {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .col-xsm-1 {
+        flex: 0 0 8.33333%;
+        max-width: 8.33333%;
+    }
+
+    .col-xsm-2 {
+        flex: 0 0 16.66667%;
+        max-width: 16.66667%;
+    }
+
+    .col-xsm-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    .col-xsm-4 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+
+    .col-xsm-5 {
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+    }
+
+    .col-xsm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .col-xsm-7 {
+        flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+
+    .col-xsm-8 {
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+
+    .col-xsm-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+
+    .col-xsm-10 {
+        flex: 0 0 83.33333%;
+        max-width: 83.33333%;
+    }
+
+    .col-xsm-11 {
+        flex: 0 0 91.66667%;
+        max-width: 91.66667%;
+    }
+
+    .col-xsm-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 
     .col-sm-auto {

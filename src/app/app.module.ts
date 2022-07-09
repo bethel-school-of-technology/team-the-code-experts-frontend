@@ -21,6 +21,14 @@ import { PostInputComponent } from './components/home/post-input/post-input.comp
 import { ExploreComponent } from './components/explore/explore.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ProfileComponent } from './components/profile/profile.component';
+<<<<<<< HEAD
+=======
+import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
+import { ChangeUsernameComponent } from './components/settings/change-username/change-username.component';
+import { DeleteAccountComponent } from './components/settings/delete-account/delete-account.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+>>>>>>> c38c1c9a0312e0c8bd36114a3a03df68a36fd9a7
 
 @NgModule({
   declarations: [ // Components
@@ -38,6 +46,14 @@ import { ProfileComponent } from './components/profile/profile.component';
     ExploreComponent,
     SettingsComponent,
     ProfileComponent,
+<<<<<<< HEAD
+=======
+    ChangePasswordComponent,
+    ChangeUsernameComponent,
+    DeleteAccountComponent,
+    LoginComponent,
+    LogoutComponent,
+>>>>>>> c38c1c9a0312e0c8bd36114a3a03df68a36fd9a7
   ],
   imports: [ // Modules
     BrowserModule,

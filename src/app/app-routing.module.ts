@@ -8,6 +8,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ExploreComponent } from './components/explore/explore.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   { // Default page is home
@@ -28,12 +30,21 @@ const routes: Routes = [
     component: ExploreComponent
   },
   {
+<<<<<<< HEAD
     path: "settings",
     component: SettingsComponent
+=======
+    path: 'login',
+    component: LoginComponent
+>>>>>>> c38c1c9a0312e0c8bd36114a3a03df68a36fd9a7
   },
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'goodbye',
+    component: LogoutComponent
   },
   { // Error handling
     path: 'error/:id',

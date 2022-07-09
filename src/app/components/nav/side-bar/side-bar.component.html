@@ -95,9 +95,11 @@
 
     <!-- Nav Item - Signed in as -->
     <li id="user" class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link text-gray-200">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Signed in as: {{user}}</span></a>
+            <span>Signed in as: </span>
+            <a class="text-gray-200" routerLink="profile"><span>{{user}}</span></a>
+        </a>
     </li>
 </ul>
 <!-- End of Sidebar -->

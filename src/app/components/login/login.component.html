@@ -1,0 +1,75 @@
+<!-- Signup container START -->
+<div class="container login">
+    <div class="card bg-dark o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <!-- Signup title -->
+                        <div class="text-center">
+                            <h1 class="h4 mb-4">Login</h1>
+                        </div>
+
+                        <!-- Signup form START -->
+                        <form class="user" [formGroup]="loginForm" (ngSubmit)="login()">
+
+                            <!-- Appears if passwords are incorrect -->
+                            <div *ngIf="passMatch === false" class="text-center">
+                                <i>
+                                    <p class="input-error">*Incorrect password</p>
+                                </i>
+                            </div>
+
+                            <!-- Appears if username already exists -->
+                            <div *ngIf="userExists === true" class="text-center">
+                                <i>
+                                    <p class="input-error">*Username doesn't exist. Register <a
+                                            routerLink="register">here</a></p>
+                                </i>
+                            </div>
+
+                            <!-- Username input START -->
+
+                            <div class="form-group">
+                                <span class="glyphicon glyphicon-refresh blue" title="status"> </span>
+
+                                <input
+                                    [ngStyle]="{'border': (loginForm.controls['username'].dirty && loginForm.hasError('required', 'username') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                                    [maxlength]="20" type="username" class="form-control bg-light"
+                                    formControlName="username" id="InputUsername" placeholder="Username" required>
+
+                                <span
+                                    *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username')"></span>
+                            </div>
+
+                            <!-- Password inputs -->
+                            <div class="form-group">
+                                <span class="glyphicon glyphicon-refresh blue" title="status"> </span>
+
+                                <input
+                                    [ngStyle]="{'border': (loginForm.controls['password'].dirty && loginForm.hasError('required', 'password') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                                    [maxlength]="20" type="password" class="form-control bg-light"
+                                    formControlName="password" id="InputPassword" placeholder="Password" required>
+
+                                <span
+                                    *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')"></span>
+                            </div>
+
+                            <!-- Register button -->
+                            <button [disabled]="!loginForm.valid" class="btn btn-secondary btn-block" type="submit">
+                                Login
+                            </button>
+                        </form>
+                        <!-- Signup form END -->
+
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" routerLink="/signup">Don't have an account? Register!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

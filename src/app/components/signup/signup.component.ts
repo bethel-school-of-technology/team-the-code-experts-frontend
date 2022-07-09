@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { NgToastService } from 'ng-angular-popup';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -19,6 +21,8 @@ export class SignupComponent implements OnInit {
     private http: HttpClient, // Build private HTTP client
     private router: Router, // Build private router
     private cookieService: CookieService, // Create Cookie Service
+    private toast: NgToastService, // Add toast service
+    private userService: UserService, // Import user service
   ) { }
 
   ngOnInit(): void {
@@ -42,7 +46,7 @@ export class SignupComponent implements OnInit {
     };
 
     // Register user
-    this.http.post<any>('http://localhost:4000/api/users/register', // Mock server
+    this.userService.register(
       {
         Firstname: this.signupForm.value.firstname,
         Lastname: this.signupForm.value.lastname,
@@ -50,17 +54,28 @@ export class SignupComponent implements OnInit {
         Username: this.signupForm.value.username,
         Password: this.signupForm.value.password,
       }
-    )
-      .subscribe(res => {
-        console.log(res)
-        if (res.message === 'Registration successful') {
-          // If user was created
+    ).subscribe(res => {
+      if (res.message === 'Registration successful') { // If user is registered, auto login
+        this.userService.login(
+          {
+            Username: this.signupForm.value.username,
+            Password: this.signupForm.value.password
+          }
+        ).subscribe(res => {
+          console.log(res)
+
           this.signupForm.reset(); // Clear form
           this.router.navigate(['home']) // Re-direct to home
-        } else {
-          // If user already exists
-          this.userExists = true; // Display error message
-        }
-      })
+          this.toast.success({
+            detail: "Success!",
+            summary: "Welcome to Broadcast!",
+            duration: 5000
+          })
+        });
+      } else {
+        // If user already exists
+        this.userExists = true; // Display error message
+      }
+    })
   }
 }
