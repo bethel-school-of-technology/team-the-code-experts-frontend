@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class LogoutComponent implements OnInit {
   time: number;
   goodbye: any = {
-    message: "Seeya later allegator!"
+    message: "Seeya later alligator!"
   }
 
   constructor(
