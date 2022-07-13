@@ -1,0 +1,25 @@
+#logo {
+  width: auto;
+  height: 2.5em;
+  margin: 0.7em;
+}
+
+.btn {
+  color: black;
+  justify-content: center;
+  background-color: #ff6c14;
+  margin: 1em;
+  border: solid black
+}
+
+.btn:hover {
+  color: white;
+  background-color: black ;
+}
+
+
+.settingsItem {
+  background-color: #ff6c14;
+  text-align: center;
+  justify-content: center;
+}

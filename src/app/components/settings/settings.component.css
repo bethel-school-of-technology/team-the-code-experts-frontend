@@ -4,9 +4,20 @@
         margin: 0.7em;
     }
 
+.col {
+  border: solid black;
+  margin: 2em;
+
+}
+
+.col:hover {
+  background-color: black;
+
+}
+
 
 .btn {
-    color: #1f2024;
+    color: black;
 }
 
 .btn:hover {
@@ -16,4 +27,12 @@
 
 .settingsItem {
     background-color: #ff6c14;
+}
+
+.navbar-nav {
+  padding-left: 2em;
+}
+
+#user {
+  bottom: 0;
 }

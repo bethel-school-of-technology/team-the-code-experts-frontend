@@ -1,0 +1,48 @@
+#logo {
+  width: auto;
+  height: 2.5em;
+  margin: 0.7em;
+}
+
+
+h3 {
+  margin: 1em;
+  font-size: 3em;
+  background-color: white;
+  color: red;
+}
+
+.col {
+  background-color: white
+}
+
+p {
+  background-color: white;
+  color: Black;
+  margin: 2.5em;
+  font-size: large;
+}
+
+
+.buttonItem {
+  justify-content: center;
+}
+
+
+.deleteButtons {
+  border: solid black;
+  margin: 3em;
+  font-size: 1.25em;
+}
+
+#dlt {
+  background-color:red;
+  color: white;
+}
+
+#cncl {
+
+  background-color: white;
+  color: black
+
+}

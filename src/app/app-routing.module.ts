@@ -10,6 +10,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ChangeUsernameComponent } from './components/settings/change-username/change-username.component';
+import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
+import { DeleteAccountComponent } from './components/settings/delete-account/delete-account.component';
 
 const routes: Routes = [
   { // Default page is home
@@ -32,6 +35,18 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "changePassword",
+    component: ChangePasswordComponent
+  },
+  {
+    path: "changeUsername",
+    component: ChangeUsernameComponent
+  },
+  {
+    path: "deleteAccount",
+    component: DeleteAccountComponent
   },
   {
     path: "settings",

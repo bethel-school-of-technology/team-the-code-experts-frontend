@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideBarComponent } from '../nav/side-bar/side-bar.component';
 
 @Component({
   selector: 'app-settings',
