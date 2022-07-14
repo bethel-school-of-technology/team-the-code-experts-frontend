@@ -12,25 +12,35 @@
 
 
   <div class="w-25 mx-auto row settingsItem rounded" style="border: 1px solid black; margin:25px">
+    <form  [formGroup]="updateInfo" (ngSubmit)="update()">
+
+      <div *ngIf="usernamesMatch === false" class="text-center">
+        <i>
+            <p class="input-error">*Usernames don't match</p>
+        </i>
+    </div>
 
 
       <div style="margin-top:1em; margin-bottom: 1em;" class="col rounded">
-        <input type="text" placeholder="Enter Old Username">
-
+        <input formControlName="oldUsername" type="text" placeholder="Enter Old Username">
+        <span *ngIf="updateInfo.controls['oldUsername'].dirty && updateInfo.hasError('required', 'oldUsername')"></span>
       </div>
 
 
       <div style="margin-top:1em; margin-bottom: 1em;" class="col">
-        <input type="text" placeholder="Enter New Username">
+        <input formControlName="newUsername" type="text" placeholder="Enter New Username">
+        <span *ngIf="updateInfo.controls['newUsername'].dirty && updateInfo.hasError('required', 'newUsername')"></span>
       </div>
 
 
 
       <div style="margin-top:1em; margin-bottom: 1em;" class="col">
-        <input type="text" placeholder="Confirm New Username">
+        <input formControlName="confirmUsername" type="text" placeholder="Confirm New Username">
+        <span *ngIf="updateInfo.controls['confirmUsername'].dirty && updateInfo.hasError('required', 'confirmUsername')"></span>
       </div>
 
-      <a href="http://localhost:4200/settings"><button class="btn">Submit</button></a>
+          <button [disabled]="!updateInfo.valid" type="submit" class="btn">Submit</button>
+    </form>
   </div>
 
 
