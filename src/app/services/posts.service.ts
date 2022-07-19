@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -18,12 +18,21 @@ export class PostsService {
     return this.http.get<any>(url);
   }
 
-  public createPost(): Observable<any> {
-    const url = 'http://localhost:3000/posts';
+  /**
+   * 
+   * @param post Post object
+   * @param post.Title Post title string
+   * @param post.Body Post body string
+   * @returns HTTP response
+   */
+  public createPost(post: { Title: string; Body: string; }): Observable<any> {
+    let headers = new HttpHeaders()
+    headers.set('Authorization', 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYiLCJuYmYiOjE2NTgyMDIyMzksImV4cCI6MTY1ODgwNzAzOSwiaWF0IjoxNjU4MjAyMjM5fQ.kPqNCLU8K5_mhhASancZogIf_G2jdwXPKrhdM8Rnn9s')
+    const url = 'http://localhost:4000/api/Messages';
     return this.http.post<any>(url,
       {
-        Title: "Title",
-        Body: "Body"
+        messageTitle: post.Title,
+        messageBody: post.Body
       }
     );
   }

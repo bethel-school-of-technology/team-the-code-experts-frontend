@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-post-input',
@@ -18,6 +19,7 @@ export class PostInputComponent implements OnInit {
     private http: HttpClient, // Build private HTTP client
     private router: Router, // Build private router
     private toast: NgToastService, // Add toast service
+    private postService: PostsService, // Create posts service
   ) { }
 
   ngOnInit(): void {
@@ -29,15 +31,10 @@ export class PostInputComponent implements OnInit {
 
   post(): any {
 
-    this.http.post<any>('http://localhost:3000/posts', // Mock JSON server
-      {
-        Title: this.postForm.value.postTitle,
-        Body: this.postForm.value.postBody,
-      },
-      {
-        withCredentials: true
-      }
-    )
+    this.postService.createPost({
+      Title: this.postForm.value.postTitle,
+      Body: this.postForm.value.postBody,
+    })
       .subscribe(async (res) => {
         console.log(res)
         try {
@@ -49,6 +46,8 @@ export class PostInputComponent implements OnInit {
             duration: 5000
           })
         } catch (error) {
+          console.log(res)
+
           this.toast.warning({
             detail: "Error",
             summary: "Post failed :/",
