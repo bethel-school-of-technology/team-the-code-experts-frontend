@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BroadcastCookieService } from './broadcast-cookies.service';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
     private cookieService: BroadcastCookieService, // Create Broadcast cookie service
     private userService: UserService, // Import user service
     private router: Router, // Create router
+    private browserCookieService: CookieService, // Cookie service
   ) { }
 
   // Check status of logged in user
@@ -36,5 +38,9 @@ export class AuthService {
         this.router.navigate(['signup']) // Re-direct to signup page
         break;
     }
+  }
+
+  setToken(): any {
+    return new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
   }
 }

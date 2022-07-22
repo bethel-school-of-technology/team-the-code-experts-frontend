@@ -37,7 +37,7 @@ export class PostInputComponent implements OnInit {
     })
       .subscribe(async (res) => {
         console.log(res)
-        try {
+        if (res.appUser) {
           this.postForm.reset();
           this.reloadComponent();
           this.toast.success({
@@ -45,9 +45,7 @@ export class PostInputComponent implements OnInit {
             summary: "Post was successful!",
             duration: 5000
           })
-        } catch (error) {
-          console.log(res)
-
+        } else {
           this.toast.warning({
             detail: "Error",
             summary: "Post failed :/",

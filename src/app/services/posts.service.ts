@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,8 @@ export class PostsService {
   constructor(
     private http: HttpClient, // Build private HTTP client
     private router: Router, // Build private router
+    private cookieService: CookieService, // Create cookie service
+    private authService: AuthService, // Create Auth service
   ) { }
 
   public getPosts(): Observable<any> {
@@ -26,13 +30,15 @@ export class PostsService {
    * @returns HTTP response
    */
   public createPost(post: { Title: string; Body: string; }): Observable<any> {
-    let headers = new HttpHeaders()
-    headers.set('Authorization', 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYiLCJuYmYiOjE2NTgyMDIyMzksImV4cCI6MTY1ODgwNzAzOSwiaWF0IjoxNjU4MjAyMjM5fQ.kPqNCLU8K5_mhhASancZogIf_G2jdwXPKrhdM8Rnn9s')
+    let headers = this.authService.setToken();
     const url = 'http://localhost:4000/api/Messages';
     return this.http.post<any>(url,
       {
         messageTitle: post.Title,
         messageBody: post.Body
+      },
+      {
+        headers: headers
       }
     );
   }
