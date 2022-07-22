@@ -7,7 +7,7 @@ export class FlaggingService {
 
   constructor() { }
 
-  flag(postID: number, userID: number): any {
-    
+  flag(postID: number): any {
+    alert('Flagged post ' + postID)
   }
 }

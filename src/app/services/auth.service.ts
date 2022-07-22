@@ -20,7 +20,7 @@ export class AuthService {
   ) { }
 
   // Check status of logged in user
-  loginStatus(): any {
+  public loginStatus(): any {
     let status: string;
     if (this.userService.tokenStatus() === true) {
       status = 'logged_in';
@@ -40,7 +40,7 @@ export class AuthService {
     }
   }
 
-  setToken(): any {
+  public setToken(): any {
     return new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
   }
 }

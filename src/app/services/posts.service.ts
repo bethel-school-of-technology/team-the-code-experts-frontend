@@ -16,12 +16,6 @@ export class PostsService {
     private cookieService: CookieService, // Create cookie service
     private authService: AuthService, // Create Auth service
   ) { }
-
-  public getPosts(): Observable<any> {
-    const url = 'http://localhost:3000/posts';
-    return this.http.get<any>(url);
-  }
-
   /**
    * 
    * @param post Post object
@@ -31,12 +25,20 @@ export class PostsService {
    */
   public createPost(post: { Title: string; Body: string; }): Observable<any> {
     let headers = this.authService.setToken();
-    const url = 'http://localhost:4000/api/Messages';
-    return this.http.post<any>(url,
+    return this.http.post<any>('http://localhost:4000/api/Messages',
       {
         messageTitle: post.Title,
         messageBody: post.Body
       },
+      {
+        headers: headers
+      }
+    );
+  }
+
+  public getAllPosts(): Observable<any> {
+    let headers = this.authService.setToken();
+    return this.http.get<any>('http://localhost:4000/api/messages',
       {
         headers: headers
       }

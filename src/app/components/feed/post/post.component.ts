@@ -16,7 +16,7 @@ import { FlaggingService } from 'src/app/services/flagging.service';
 })
 export class PostComponent implements OnInit {
   @Input() public type: number; // 1 = home, 2 = explore
-  posts: Post[];
+  @Input() public posts: Post[];
   postType: number;
   noPostsMessage: any;
   votes: number = 0;
@@ -32,41 +32,37 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.postType = this.type
-    
-    this.postService.getPosts().subscribe(res => {
-      this.posts = res.reverse();
-    });
 
     if (!this.posts) {
       this.noPostsMessage = this.noPostsService.noPosts();
     }
   }
 
-  upvote(postID: number, userID: number) {
+  upvote(postID: number) {
     /**
      * Upvote post
      * If post already was upvoted by the user, remove vote
      * Lastly, update vote count
      */
-    this.votingService.upvote(postID, userID);
+    this.votingService.upvote(postID);
   }
 
-  downvote(postID: number, userID: number) {
+  downvote(postID: number) {
     /**
      * Downvote post
      * If post already was downvoted by the user, remove vote
      * Lastly, update vote count
      */
-    this.votingService.downvote(postID, userID);
+    this.votingService.downvote(postID);
 
   }
 
-  flag(postID: number, userID: number) {
+  flag(postID: number) {
     /**
      * Flag post
      * If post is already flagged, remove flag
      */
 
-    this.flaggingService.flag(postID, userID);
+    this.flaggingService.flag(postID);
   }
 }

@@ -6,47 +6,55 @@
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold">{{post.Title}}</h6>
+                <h6 class="m-0 font-weight-bold">{{post.messageTitle}}</h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div class="text-gray-400">⠇</div>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow bg-light animated--fade-in"
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
                         <a class="dropdown-item" href="#">Flag</a>
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Share</a>
                     </div>
                 </div>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                {{post.Body}}
+                {{post.messageBody}}
             </div>
             <div class="card-footer">
-                <div class="row">
+                <div class="row justify-content-between">
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
                         <div class="row vote">
-                            <div class="vote-arrows" (click)="upvote(1, 2)">
+                            <div class="vote-arrows" (click)="upvote(post.messageId)">
                                 <img src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{votes}}
                             </div>
-                            <div class="vote-arrows" (click)="downvote(1, 2)">
+                            <div class="vote-arrows" (click)="downvote(post.messageId)">
                                 <img src="../../../assets/downvote.svg" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xsm-8">
+                    <div class="justify-content-end col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xsm-3">
+                    </div>
+                    <div class="justify-content-end col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xsm-5">
+                        <a>{{post.appUser.username}}</a>
+                        <a> // {{post.dateStamp | date: 'short' }}</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- 
+        **********************************
+        **     NO POSTS CARDS BELOW     **
+        **********************************
+     -->
 
     <!-- No Posts HOME Card Start -->
     <div *ngIf="!posts && postType === 1" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
@@ -63,8 +71,6 @@
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
                         <a class="dropdown-item" href="#">Flag</a>
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Share</a>
                     </div>
                 </div>
@@ -77,13 +83,13 @@
                 <div class="row">
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
                         <div class="row vote">
-                            <div class="vote-arrows" (click)="upvote(1, 2)">
+                            <div class="vote-arrows">
                                 <img src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{votes}}
                             </div>
-                            <div class="vote-arrows" (click)="downvote(1, 2)">
+                            <div class="vote-arrows">
                                 <img src="../../../assets/downvote.svg" alt="">
                             </div>
                         </div>
@@ -111,8 +117,6 @@
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
                         <a class="dropdown-item" href="#">Flag</a>
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Share</a>
                     </div>
                 </div>
@@ -125,13 +129,13 @@
                 <div class="row">
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
                         <div class="row vote">
-                            <div class="vote-arrows" (click)="upvote(1, 2)">
+                            <div class="vote-arrows">
                                 <img src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{votes}}
                             </div>
-                            <div class="vote-arrows" (click)="downvote(1, 2)">
+                            <div class="vote-arrows">
                                 <img src="../../../assets/downvote.svg" alt="">
                             </div>
                         </div>

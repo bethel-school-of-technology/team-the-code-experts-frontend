@@ -17,7 +17,7 @@ import { NavBarMobileComponent } from './components/nav/nav-bar-mobile/nav-bar-m
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostComponent } from './components/feed/post/post.component';
-import { PostInputComponent } from './components/home/post-input/post-input.component';
+import { PostInputComponent } from './components/post-input/post-input.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ProfileComponent } from './components/profile/profile.component';

@@ -34,6 +34,9 @@ export class UserService {
   // Fetch username
   public getUser(): string {
     return this.cookieService.get('username');
+
+    // Get user profile for username
+    // return this.http.get<any>('https://localhost:4000/api/');
   };
 
   // Observable<any>

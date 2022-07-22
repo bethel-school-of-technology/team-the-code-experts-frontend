@@ -11,11 +11,11 @@ export class VotingService {
   ) { }
 
   // Need to get postID, as well as userID
-  upvote(postID: number, userID: number): any {
-    alert('User ID ' + userID + ' upvoted post: ' + postID)
+  upvote(postID: number): any {
+    alert('upvoted post: ' + postID)
   }
 
-  downvote(postID: number, userID: number): any {
-    alert('User ID ' + userID + ' downvoted post: ' + postID)
+  downvote(postID: number): any {
+    alert('downvoted post: ' + postID)
   }
 }
