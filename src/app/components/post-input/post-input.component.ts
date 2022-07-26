@@ -46,6 +46,7 @@ export class PostInputComponent implements OnInit {
             duration: 5000
           })
         } else {
+          this.reloadComponent();
           this.toast.warning({
             detail: "Error",
             summary: "Post failed :/",
