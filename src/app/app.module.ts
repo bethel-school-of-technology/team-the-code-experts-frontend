@@ -26,6 +26,7 @@ import { ChangeUsernameComponent } from './components/settings/change-username/c
 import { DeleteAccountComponent } from './components/settings/delete-account/delete-account.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ChangeEmailComponent } from './components/settings/change-email/change-email.component';
 
 @NgModule({
   declarations: [ // Components
@@ -48,6 +49,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     DeleteAccountComponent,
     LoginComponent,
     LogoutComponent,
+    ChangeEmailComponent,
   ],
   imports: [ // Modules
     BrowserModule,

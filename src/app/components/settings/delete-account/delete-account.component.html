@@ -1,1 +1,32 @@
-<p>delete-account works!</p>
+<nav class="bg-dark col-12">
+  <div class="row">
+    <div class="col-md-6 col-sm-1">
+      <a class="" href="/home">
+        <img
+          id="logo"
+          src="../../../../assets/broadcast_logo.svg"
+          alt="Broadcast Logo"
+        />
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row inputrow">
+    <div class="col-md-6 holder rounded">
+      <div class="alert rounded">WARNING</div>
+      <div class="warningMessage">
+        Your Account Will Be Gone <span class="forever">FOREVER</span>
+      </div>
+      <div class="warningMessage">
+        Are You Sure You Want To Delete Your Account?
+      </div>
+      <a routerLink="/home">
+        <button class="btn back">Go Back</button>
+      </a>
+      <button class="btn delete" routerLink="/explore">
+        Delete My Account
+      </button>
+    </div>
+  </div>
+</div>

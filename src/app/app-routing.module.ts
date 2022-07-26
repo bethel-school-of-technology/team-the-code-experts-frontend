@@ -8,6 +8,11 @@ import { ErrorComponent } from './components/error/error.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ChangeUsernameComponent } from './components/settings/change-username/change-username.component';
+import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
+import { ChangeEmailComponent } from './components/settings/change-email/change-email.component';
+import { DeleteAccountComponent } from './components/settings/delete-account/delete-account.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { // Default page is home
@@ -18,6 +23,26 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'changeUsername',
+    component: ChangeUsernameComponent
+  },
+  {
+    path: 'changePassword',
+    component: ChangePasswordComponent
+  },
+  {
+    path: 'changeEmail',
+    component: ChangeEmailComponent
+  },
+  {
+    path: 'deleteAccount',
+    component: DeleteAccountComponent
   },
   {
     path: 'explore',
