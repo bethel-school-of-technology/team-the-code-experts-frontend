@@ -40,7 +40,7 @@ export class AuthService {
     }
   }
 
-  public setToken(): any {
+  public setTokenHeader(): any {
     return new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
   }
 }

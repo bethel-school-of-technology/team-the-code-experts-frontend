@@ -24,7 +24,7 @@ export class PostsService {
    * @returns HTTP response
    */
   public createPost(post: { Title: string; Body: string; }): Observable<any> {
-    let headers = this.authService.setToken();
+    let headers = this.authService.setTokenHeader();
     return this.http.post<any>('http://localhost:4000/api/Messages',
       {
         messageTitle: post.Title,
@@ -37,7 +37,7 @@ export class PostsService {
   }
 
   public getAllPosts(): Observable<any> {
-    let headers = this.authService.setToken();
+    let headers = this.authService.setTokenHeader();
     return this.http.get<any>('http://localhost:4000/api/messages',
       {
         headers: headers

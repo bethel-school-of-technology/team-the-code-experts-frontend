@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
@@ -15,6 +15,7 @@ export class UserService {
     private router: Router, // Build private router
     private cookieService: CookieService, // Create cookie service
     private BroadcastCookieService: BroadcastCookieService, // Import Broadcast Cookie Service
+    private browserCookieService: CookieService, // Cookie service
   ) { }
 
   // Register user
@@ -34,10 +35,17 @@ export class UserService {
   // Fetch username
   public getUser(): string {
     return this.cookieService.get('username');
-
-    // Get user profile for username
-    // return this.http.get<any>('https://localhost:4000/api/');
   };
+
+  public getUserProfile(): Observable<any> {
+    
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.get<any>('http://localhost:4000/api/messages/mymessages',
+      {
+        headers: headers
+      }
+    );
+  }
 
   // Observable<any>
   // Log out user

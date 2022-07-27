@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   public signupForm !: FormGroup; // Create signup form
   passMatch = true; // Check if passwords match
   userExists = false; // Check if username already exists
+  public errorMessage;
 
   constructor(
     private formBuilder: FormBuilder, // Build private form
@@ -73,7 +74,12 @@ export class SignupComponent implements OnInit {
           });
         }
         // Still need to add error handling and what not for invalid username/password
+      }, error => {
+        console.log(error)
+        this.errorMessage = error.error.message
       });
+    }, error => {
+      this.errorMessage = error.error.message
     })
     // If user already exists
     // this.userExists = true; // Display error message
