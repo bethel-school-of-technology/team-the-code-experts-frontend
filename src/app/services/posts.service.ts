@@ -45,4 +45,35 @@ export class PostsService {
     );
   }
 
+  public deletePost(id: number): Observable<any> {
+    let headers = this.authService.setTokenHeader();
+    return this.http.delete<any>(`http://localhost:4000/api/messages/${id}`,
+      {
+        headers: headers
+      }
+    );
+  }
+
+  public editPost(Title: string, Body: string, id: number): Observable<any> {
+    let headers = this.authService.setTokenHeader();
+    return this.http.put<any>(`http://localhost:4000/api/messages/${id}`,
+      {
+        messageTitle: Title,
+        messageBody: Body,
+      },
+      {
+        headers: headers
+      }
+    );
+  }
+
+  // public sharePost(postId: number): Observable<any> {
+  //   let headers = this.authService.setTokenHeader();
+  //   return this.http.get<any>('http://localhost:4000/api/messages',
+  //     {
+  //       headers: headers
+  //     }
+  //   );
+  // }
+
 }
