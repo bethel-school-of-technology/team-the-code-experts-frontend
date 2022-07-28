@@ -8,6 +8,7 @@ import { Post } from 'src/app/models/post';
 import { NoPostsService } from 'src/app/services/no-posts.service';
 import { VotingService } from 'src/app/services/voting.service';
 import { FlaggingService } from 'src/app/services/flagging.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-post',
@@ -28,6 +29,7 @@ export class PostComponent implements OnInit {
     private noPostsService: NoPostsService, // Import no posts messages
     private votingService: VotingService, // Import Voting service
     private flaggingService: FlaggingService, // Import flagging service
+    private userService: UserService, // Import user service
   ) { }
 
   ngOnInit(): void {
@@ -64,5 +66,20 @@ export class PostComponent implements OnInit {
      */
 
     this.flaggingService.flag(postID);
+  }
+
+  handleFollow(userID: number): any {
+    let following: boolean; // True = IS following, False = is NOT following
+
+    following = true;
+    if (following === true) {
+      this.userService.followUser(userID).subscribe(res => {
+
+      })
+    } else if (following === false) {
+      this.userService.unfollowUser(userID).subscribe(res => {
+        
+      })
+    }
   }
 }

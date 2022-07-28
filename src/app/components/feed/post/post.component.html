@@ -15,8 +15,8 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
-                        <a class="dropdown-item" href="#">Flag</a>
-                        <a class="dropdown-item" href="#">Share</a>
+                        <a class="dropdown-item" (click)="handleFollow(post.appUser.id)">Follow</a>
+                        <!-- <a class="dropdown-item" href="#">Share</a> -->
                     </div>
                 </div>
             </div>
@@ -24,9 +24,10 @@
             <div class="card-body">
                 {{post.messageBody}}
             </div>
+            <!-- Card footer -->
             <div class="card-footer">
                 <div class="row justify-content-between">
-                    <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
+                    <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows" (click)="upvote(post.messageId)">
                                 <img src="../../../assets/upvote.svg" alt="">
@@ -39,9 +40,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="justify-content-end col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xsm-3">
-                    </div>
-                    <div class="justify-content-end col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xsm-5">
+                    <!-- <div class="justify-content-end col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xsm-3">
+                    </div> -->
+                    <div class="justify-content-end col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-9 col-xsm-7">
                         <a>{{post.appUser.username}}</a>
                         <a> // {{post.dateStamp | date: 'short' }}</a>
                     </div>
@@ -57,7 +58,7 @@
      -->
 
     <!-- No Posts HOME Card Start -->
-    <div *ngIf="!posts && postType === 1" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
+    <div *ngIf="!posts.length && postType === 1" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
@@ -70,8 +71,8 @@
                     <div class="dropdown-menu dropdown-menu-right shadow bg-dropdown animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
-                        <a class="dropdown-item" href="#">Flag</a>
-                        <a class="dropdown-item" href="#">Share</a>
+                        <a class="dropdown-item" href="#">Follow</a>
+                        <!-- <a class="dropdown-item" href="#">Share</a> -->
                     </div>
                 </div>
             </div>
@@ -103,7 +104,7 @@
     <!-- No Posts HOME Card End -->
 
     <!-- No Posts EXPLORE Card Start -->
-    <div *ngIf="!posts && postType === 2" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
+    <div *ngIf="!posts.length && postType === 2" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
@@ -116,8 +117,8 @@
                     <div class="dropdown-menu dropdown-menu-right shadow bg-dropdown animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
-                        <a class="dropdown-item" href="#">Flag</a>
-                        <a class="dropdown-item" href="#">Share</a>
+                        <a class="dropdown-item" href="#">Follow</a>
+                        <!-- <a class="dropdown-item" href="#">Share</a> -->
                     </div>
                 </div>
             </div>

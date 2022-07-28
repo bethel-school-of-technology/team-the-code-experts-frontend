@@ -1,0 +1,36 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-mid">
+        <div class="modal-header">
+            <h5 class="modal-title" id="postModalLabel">Create a Post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="post" [formGroup]="postForm" (ngSubmit)="edit()">
+                <div class="form-group">
+                    <input (keydown.enter)="handleKeyEnter($event)"
+                        [ngStyle]="{'border': (postForm.controls['postTitle'].dirty && postForm.hasError('required', 'postTitle') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                        type="text" class="form-control" id="PostTitle" formControlName="postTitle"
+                        placeholder="Post Title" required>
+                    <span class="input-error"
+                        *ngIf="postForm.controls['postTitle'].dirty && postForm.hasError('required', 'postTitle')"></span>
+                </div>
+
+                <div class="form-group">
+                    <textarea
+                        [ngStyle]="{'border': (postForm.controls['postBody'].dirty && postForm.hasError('required', 'postBody') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
+                        type="text" class="form-control" id="PostBody" formControlName="postBody"
+                        placeholder="Post Body" required rows="15"></textarea>
+                    <span class="input-error"
+                        *ngIf="postForm.controls['postBody'].dirty && postForm.hasError('required', 'postBody')"></span>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary text-gray-100" data-dismiss="modal">Close</button>
+                <button [disabled]="!postForm.valid" (click)="edit()" type="button" class="btn bg-orange text-gray-100"
+                    data-dismiss="modal">Post</button>
+            </div>
+        </div>
+    </div>
+</div>

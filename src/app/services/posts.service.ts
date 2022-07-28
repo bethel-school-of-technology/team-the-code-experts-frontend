@@ -67,6 +67,13 @@ export class PostsService {
     );
   }
 
+  public getFollowingPosts(): Observable<any> {
+    let headers = this.authService.setTokenHeader();
+    return this.http.get<any>(`http://localhost:4000/api/Messages/FollowingMessages`, {
+      headers: headers
+    })
+  }
+
   // public sharePost(postId: number): Observable<any> {
   //   let headers = this.authService.setTokenHeader();
   //   return this.http.get<any>('http://localhost:4000/api/messages',

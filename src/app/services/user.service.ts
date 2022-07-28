@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { BroadcastCookieService } from './broadcast-cookies.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -74,4 +75,23 @@ export class UserService {
     this.cookieService.set('username', username);
   }
 
+  public followUser(userID: number): Observable<any> {
+    console.log(userID)
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.post<any>(`http://localhost:4000/api/messages/followingusers/${userID}`,
+    {
+      headers: headers
+    }
+    )
+  }
+
+  public unfollowUser(userID: number): Observable<any> {
+    console.log(userID)
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.delete<any>(`http://localhost:4000/api/messages/followingusers/${userID}`,
+    {
+      headers: headers
+    }
+    )
+  }
 }
