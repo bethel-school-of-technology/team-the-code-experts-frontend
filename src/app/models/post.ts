@@ -1,7 +1,7 @@
 export class Post {
     messageId: number;
     appUser: {
-        id: number
+        id: number;
         firstName: string;
         lastName: string;
         email: string;
@@ -11,6 +11,13 @@ export class Post {
     messageTitle: string;
     messageBody: string;
     responses: [];
-    votes: [];
+    voteSummary: number;
+    votes:  [
+                // voteId: number,
+                // messageId: number,
+                // responseId: number,
+                // appUser: [],
+                // value: number,
+            ];
     flags: [];
 }
