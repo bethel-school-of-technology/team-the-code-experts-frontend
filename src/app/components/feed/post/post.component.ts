@@ -35,6 +35,8 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.postType = this.type
 
+    console.log(this.posts)
+    
     if (!this.posts) {
       this.noPostsMessage = this.noPostsService.noPosts();
     }
@@ -68,18 +70,24 @@ export class PostComponent implements OnInit {
     this.flaggingService.flag(postID);
   }
 
-  handleFollow(userID: number): any {
+  handleFollow(userID: number, type?: boolean): any {
     let following: boolean; // True = IS following, False = is NOT following
 
-    following = true;
-    if (following === true) {
-      this.userService.followUser(userID).subscribe(res => {
+    this.postService.getFollowingPosts().subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
 
-      })
-    } else if (following === false) {
-      this.userService.unfollowUser(userID).subscribe(res => {
-        
-      })
-    }
+    // following = true;
+    // if (following === true) {
+    //   this.userService.followUser(userID).subscribe(res => {
+    //     console.log(res)
+    //   })
+    // } else if (following === false) {
+    //   this.userService.unfollowUser(userID).subscribe(res => {
+
+    //   })
+    // }
   }
 }

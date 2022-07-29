@@ -39,7 +39,7 @@ export class UserService {
   };
 
   public getUserProfile(): Observable<any> {
-    
+
     let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
     return this.http.get<any>('http://localhost:4000/api/messages/mymessages',
       {
@@ -79,9 +79,10 @@ export class UserService {
     console.log(userID)
     let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
     return this.http.post<any>(`http://localhost:4000/api/messages/followingusers/${userID}`,
-    {
-      headers: headers
-    }
+      {},
+      {
+        headers: headers
+      }
     )
   }
 
@@ -89,9 +90,18 @@ export class UserService {
     console.log(userID)
     let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
     return this.http.delete<any>(`http://localhost:4000/api/messages/followingusers/${userID}`,
-    {
-      headers: headers
-    }
+      {
+        headers: headers
+      }
+    )
+  }
+
+  public getFollowingUsers(): Observable<any> {
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.get<any>(`http://localhost:4000/api/messages/followingusers/`,
+      {
+        headers: headers
+      }
     )
   }
 }
