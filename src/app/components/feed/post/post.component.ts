@@ -36,7 +36,7 @@ export class PostComponent implements OnInit {
     this.postType = this.type
 
     console.log(this.posts)
-    
+
     if (!this.posts) {
       this.noPostsMessage = this.noPostsService.noPosts();
     }
@@ -62,11 +62,6 @@ export class PostComponent implements OnInit {
   }
 
   flag(postID: number) {
-    /**
-     * Flag post
-     * If post is already flagged, remove flag
-     */
-
     this.flaggingService.flag(postID);
   }
 
@@ -89,5 +84,12 @@ export class PostComponent implements OnInit {
 
     //   })
     // }
+  }
+
+  handleFlag(postID: number): any {
+    console.log(postID)
+    this.flaggingService.flag(postID).subscribe(res => {
+      console.log(res)
+    })
   }
 }
