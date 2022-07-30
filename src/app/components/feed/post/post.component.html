@@ -16,7 +16,7 @@
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
                         <a class="dropdown-item" (click)="handleFlag(post.messageId)">Flag</a>
-                        <a class="dropdown-item" (click)="handleFollow(post.appUser.id)">Follow</a>
+                        <a class="dropdown-item" (click)="handleFollow(post)">{{followStatus(post)}}</a>
                         <!-- <a class="dropdown-item" href="#">Share</a> -->
                     </div>
                 </div>

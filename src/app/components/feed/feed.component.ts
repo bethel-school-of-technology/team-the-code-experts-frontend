@@ -9,8 +9,6 @@ import { PostComponent } from './post/post.component';
 })
 export class FeedComponent implements OnInit {
   @Input() public feedType: number;
-  @ViewChild(PostComponent) posts: any;
-  public postsArray: any;
 
   constructor() { }
 

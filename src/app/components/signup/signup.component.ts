@@ -15,7 +15,7 @@ export class SignupComponent implements OnInit {
   public signupForm !: FormGroup; // Create signup form
   passMatch = true; // Check if passwords match
   userExists = false; // Check if username already exists
-  public errorMessage;
+  public errorMessage: string;
 
   constructor(
     private formBuilder: FormBuilder, // Build private form
@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
 
     // Make sure passwords match
     if (this.signupForm.value.password !== this.signupForm.value.confirmPassword) {
-      return this.passMatch = false;
+      return this.errorMessage = 'Passwords don\'t match';
     };
 
     // Register user

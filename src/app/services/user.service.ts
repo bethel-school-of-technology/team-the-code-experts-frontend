@@ -39,9 +39,17 @@ export class UserService {
   };
 
   public getUserProfile(): Observable<any> {
-
     let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
     return this.http.get<any>('http://localhost:4000/api/messages/mymessages',
+      {
+        headers: headers
+      }
+    );
+  }
+
+  public getUsers(): Observable<any> {
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.get<any>('http://localhost:4000/api/users',
       {
         headers: headers
       }

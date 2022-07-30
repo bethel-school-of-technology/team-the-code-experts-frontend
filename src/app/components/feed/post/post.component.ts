@@ -22,6 +22,7 @@ export class PostComponent implements OnInit {
   postType: number;
   noPostsMessage: any;
   currentUser: User;
+  followingUsers: User;
 
   constructor(
     private http: HttpClient, // Build private HTTP client
@@ -34,10 +35,18 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.postType = this.type
+    this.postType = this.type;
+
+    this.postService.getFollowingPosts().subscribe(res => {
+      this.followingUsers = res;
+      console.log(res)
+    });
+
     // Get user data
     this.userService.getUserProfile().subscribe(res => {
       this.currentUser = res;
+      console.log(this.currentUser)
+
     });
 
     // Run for explore page
@@ -61,8 +70,8 @@ export class PostComponent implements OnInit {
   // Checks if user has voted, and vote status
   hasVoted(post: Post): number {
     // Return 1 if user has voted on the post, 0 if they have not, and -1 if its a downvote
-    if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id && vote.value === 1).length) return 1
-    else if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id && vote.value === -1).length) return -1
+    if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0]?.appUser.id && vote.value === 1).length) return 1
+    else if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0]?.appUser.id && vote.value === -1).length) return -1
     else return 0;
   };
 
@@ -157,25 +166,33 @@ export class PostComponent implements OnInit {
     this.flaggingService.flag(postID);
   }
 
-  handleFollow(userID: number, type?: boolean): any {
-    let following: boolean; // True = IS following, False = is NOT following
+  // Checks if user is following. bool true/false
+  isFollowing(post: any, appUser: any): boolean {
+    //  Return true if following, false if not following
+    if (appUser.filter((user: any) => user.appUser.id === post.appUser.id).length) return true
+    else if (appUser.filter((user: any) => user.appUser.id !== post.appUser.id).length) return false
+    else return null;
+  };
 
-    this.postService.getFollowingPosts().subscribe(res => {
-      console.log(res);
-    }, err => {
-      if (err.status === 500) return;;
-    })
+  // Follows un-following users, and un-follows following users
+  handleFollow(post: Post): any {
+    if (!this.isFollowing(post, this.followingUsers)) { // If NOT following, follow
+      this.userService.followUser(post.appUser.id).subscribe(res => {
+        console.log(res)
+        this.ngOnInit();
+      });
+    } else if (this.isFollowing(post, this.followingUsers)) { // If following, unfollow
+      this.userService.unfollowUser(post.appUser.id).subscribe(res => {
+        console.log(res)
+        this.ngOnInit();
+      });
+    }
+  }
 
-    // following = true;
-    // if (following === true) {
-    this.userService.followUser(userID).subscribe(res => {
-      console.log(res)
-    })
-    // } else if (following === false) {
-    //   this.userService.unfollowUser(userID).subscribe(res => {
-
-    //   })
-    // }
+  followStatus(post: Post): string {
+    // If followingUsers contains user ID from post, switch text from "follow" to "unfollow"
+    if (this.isFollowing(post, this.followingUsers)) return 'Unfollow'
+    else return 'Follow';
   }
 
   handleFlag(postID: number): any {
