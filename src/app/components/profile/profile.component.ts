@@ -13,9 +13,6 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.getUserProfile().subscribe((res) => {
-      this.posts = res.reverse();
-    })
   }
 
 }

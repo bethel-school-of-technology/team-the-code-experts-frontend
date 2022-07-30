@@ -48,7 +48,7 @@
                     <!-- <div class="justify-content-end col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xsm-3">
                     </div> -->
                     <div class="justify-content-end col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-9 col-xsm-7">
-                        <a>{{post.appUser.username}}</a>
+                        <a class="text-gray-400" [routerLink]="'/user/' + post.appUser.id">{{post.appUser.username}}</a>
                         <a> // {{post.dateStamp | date: 'short' }}</a>
                     </div>
                 </div>
@@ -159,4 +159,11 @@
         </div>
     </div>
     <!-- No Posts EXPLORE Card End -->
+
+    <div class="jtt justify-content-between">
+        <div *ngIf="posts?.length > 5">
+            <!-- Add jump to top -->
+            <h1>nice</h1>
+        </div>
+    </div>
 </div>

@@ -9,6 +9,7 @@ import { ExploreComponent } from './components/explore/explore.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserprofileComponent } from './components/profile/userprofile/userprofile.component';
 
 const routes: Routes = [
   { // Default page is home
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'goodbye',
     component: LogoutComponent
+  },
+  { // Error handling
+    path: 'user/:id',
+    component: UserprofileComponent
   },
   { // Error handling
     path: 'error/:id',

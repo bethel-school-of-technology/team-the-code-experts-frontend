@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild } from '@angular/core';
 import { Post } from 'src/app/models/post';
+import { PostComponent } from './post/post.component';
 
 @Component({
   selector: 'app-feed',
@@ -8,12 +9,12 @@ import { Post } from 'src/app/models/post';
 })
 export class FeedComponent implements OnInit {
   @Input() public feedType: number;
-  @Input() public postsArray: Post[];
+  @ViewChild(PostComponent) posts: any;
+  public postsArray: any;
 
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
 }

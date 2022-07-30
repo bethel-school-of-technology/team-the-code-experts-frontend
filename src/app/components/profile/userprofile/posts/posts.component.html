@@ -15,10 +15,7 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
-                        <!-- <a class="dropdown-item" (click)="sharePost(post.messageId)">Share</a> -->
-                        <a class="dropdown-item" data-toggle="modal" data-target="#edit-post-modal">Edit</a>
-                        <!-- (click)="editPost(post.messageTitle, post.messageBody ,post.messageId, post.appUser.id)" -->
-                        <a class="dropdown-item" (click)="deletePost(post.messageId)">Delete</a>
+                        <a class="dropdown-item">Flag</a>
                     </div>
                 </div>
             </div>
@@ -74,7 +71,7 @@
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold">You don't appear to have any posts yet...</h6>
+                <h6 class="m-0 font-weight-bold">{{reqUser.firstName}} doesn't appear to have any posts yet...</h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -83,16 +80,12 @@
                     <div class="dropdown-menu dropdown-menu-right shadow bg-dropdown animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
-                        <a class="dropdown-item" href="#">Delete</a>
-                        <a class="dropdown-item" href="#">Edit</a>
-                        <a class="dropdown-item" href="#">Share</a>
                     </div>
                 </div>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                As you create posts, they will accumulate here in your profile. Here you can edit, or delete your posts.
-                Click the "Broadcast Something" to create a post!
+                Check back later to see what they post! :D
             </div>
             <div class="card-footer">
                 <div class="row">
@@ -102,7 +95,7 @@
                                 <img style="filter: brightness(5) saturate(0%);" src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
-                                {{votes}}
+                                0
                             </div>
                             <div class="vote-arrows">
                                 <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg" alt="">
@@ -116,4 +109,10 @@
         </div>
     </div>
     <!-- No Posts EXPLORE Card End -->
+    <div class="jtt justify-content-between">
+        <div *ngIf="postsArray?.length > 5">
+            <!-- Add jump to top -->
+            <h1>nice</h1>
+        </div>
+    </div>
 </div>

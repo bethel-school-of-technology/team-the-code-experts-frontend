@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -10,18 +10,19 @@ import { VotingService } from 'src/app/services/voting.service';
 import { FlaggingService } from 'src/app/services/flagging.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  selector: 'app-user-profile-posts',
+  templateUrl: './posts.component.html',
+  styleUrls: ['./posts.component.css']
 })
-export class PostComponent implements OnInit {
-  @Input() public type: number; // 1 = home, 2 = explore
-  public posts: Post[];
-  postType: number;
+export class PostsComponent implements OnInit {
+  public postsArray: Post[];
   noPostsMessage: any;
+  votes: number = 0;
   currentUser: User;
+  reqUser: any;
 
   constructor(
     private http: HttpClient, // Build private HTTP client
@@ -31,31 +32,24 @@ export class PostComponent implements OnInit {
     private votingService: VotingService, // Import Voting service
     private flaggingService: FlaggingService, // Import flagging service
     private userService: UserService, // Import user service
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.postType = this.type
-    // Get user data
-    this.userService.getUserProfile().subscribe(res => {
-      this.currentUser = res;
+    let userId = Number(this.route.snapshot.paramMap.get('id'))
+
+    this.userService.getSpecificUser(userId).subscribe((res) => {
+      this.reqUser = res;
+    })
+
+    this.userService.getSpecificUsersPosts(userId).subscribe((res) => {
+      this.postsArray = res;
     });
 
-    // Run for explore page
-    if (this.type === 2) {
-      this.postService.getAllPosts().subscribe((res) => {
-        this.posts = res;
-      })
-    } else if (this.type === 1) { // Runs for home page
-      this.postService.getFollowingPosts().subscribe(res => {
-        this.posts = res;
-      })
-    }
-
-    if (!this.posts) {
+    if (!this.postsArray) {
       this.noPostsMessage = this.noPostsService.noPosts();
     }
   }
-
 
 
   // Checks if user has voted, and vote status
@@ -151,37 +145,18 @@ export class PostComponent implements OnInit {
     }
   };
 
-
-
-  flag(postID: number) {
-    this.flaggingService.flag(postID);
-  }
-
-  handleFollow(userID: number, type?: boolean): any {
-    let following: boolean; // True = IS following, False = is NOT following
-
-    this.postService.getFollowingPosts().subscribe(res => {
+  deletePost(postID: number) {
+    this.postService.deletePost(postID).subscribe(res => {
       console.log(res);
-    }, err => {
-      if (err.status === 500) return;;
-    })
-
-    // following = true;
-    // if (following === true) {
-    this.userService.followUser(userID).subscribe(res => {
-      console.log(res)
-    })
-    // } else if (following === false) {
-    //   this.userService.unfollowUser(userID).subscribe(res => {
-
-    //   })
-    // }
+      this.reloadComponent();
+    });
   }
 
-  handleFlag(postID: number): any {
-    console.log(postID)
-    this.flaggingService.flag(postID).subscribe(res => {
-      console.log(res)
-    })
-  }
+  reloadComponent() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  };
+
 }

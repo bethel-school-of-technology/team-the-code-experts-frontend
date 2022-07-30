@@ -104,4 +104,22 @@ export class UserService {
       }
     )
   }
+
+  getSpecificUser(userId: number): Observable<any> {
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.get<any>(`http://localhost:4000/api/users/${userId}`,
+      {
+        headers: headers
+      }
+    )
+  }
+
+  getSpecificUsersPosts(userId: number): Observable<any> {
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.get<any>(`http://localhost:4000/api/messages/usermessages/${userId}`,
+      {
+        headers: headers
+      }
+    )
+  }
 }
