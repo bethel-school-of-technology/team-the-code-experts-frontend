@@ -1,17 +1,3 @@
-<!-- *******************************
-     *******GET MESSAGE VOTES ON RENDER************
-     *******************************
-     *******************************
-    
- -->
-
-
-
-
-
-
-
-
 <div class="posts justify-content-center">
     <!-- Post Card -->
     <div class="buffer"></div>
@@ -49,7 +35,7 @@
                                 (currentUser && (hasVoted(post) === 1) ? 'filter: none;' : 'filter: brightness(5) saturate(0%);')
                             " src="../../../assets/upvote.svg" alt="">
                             </div>
-                            <div class="vote-count text-center">
+                            <div class="vote-count text-center" id="post-{{post.messageId}}-vote-count">
                                 {{post.voteSummary}}
                             </div>
                             <div class="vote-arrows" (click)="downvote(post)">
@@ -109,7 +95,7 @@
                                     alt="">
                             </div>
                             <div class="vote-count text-center">
-                                {{votes}}
+                                0
                             </div>
                             <div class="vote-arrows">
                                 <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg"
@@ -158,7 +144,7 @@
                                     alt="">
                             </div>
                             <div class="vote-count text-center">
-                                {{votes}}
+                                0
                             </div>
                             <div class="vote-arrows">
                                 <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg"

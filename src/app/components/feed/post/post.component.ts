@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -18,11 +18,11 @@ import { User } from 'src/app/models/user';
 })
 export class PostComponent implements OnInit {
   @Input() public type: number; // 1 = home, 2 = explore
-  @Input() public posts: Post[];
+  // @Input() public posts: Post[];
+  public posts: Post[];
+  postsArchive: any[] = [];
   postType: number;
   noPostsMessage: any;
-  votes: number = 0;
-  voteStatus: number = 0; // 0 = no votes, 1 = upvote, -1 = downvote
   currentUser: User;
 
   constructor(
@@ -37,14 +37,21 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.postType = this.type
-
-    console.log(this.posts)
-
+    // Get user data
     this.userService.getUserProfile().subscribe(res => {
-      console.log('user profile:')
-      console.log(res)
       this.currentUser = res;
     });
+
+    // Run for explore page
+    if (this.type === 2) {
+      this.postService.getAllPosts().subscribe((res) => {
+        this.posts = res;
+      })
+    } else if (this.type === 1) { // Runs for home page
+      this.postService.getFollowingPosts().subscribe(res => {
+        this.posts = res;
+      })
+    }
 
     if (!this.posts) {
       this.noPostsMessage = this.noPostsService.noPosts();
@@ -66,40 +73,39 @@ export class PostComponent implements OnInit {
   // Upvotes message
   upvote(post: Post) {
 
-    console.log(this.hasVoted(post))
-
     if (this.hasVoted(post) === 0) { // If user has NOT VOTED
       // User hasn't voted, so we add a vote
-      console.log('upvote: UP voting')
-
       this.votingService.createMessageVote(post.messageId).subscribe(res => {
-        console.log(res)
+        // Reload component
+        this.ngOnInit();
+      }, err => {
+        if (err.status === 500) return;
       });
     }
 
     if (this.hasVoted(post) === 1) { // If user HAS UPVOTED
       // User has voted, so we remove the vote
-      console.log('upvote: CLEAR voting')
       let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
       voteId = voteId[0].voteId;
       // Clear upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
-        console.log(res)
+        this.ngOnInit();
+      }, err => {
+        if (err.status === 500) return;
       });
     }
 
     if (this.hasVoted(post) === -1) { // If user HAS DOWNVOTED
       // User has downvoted, but wants to upvote, so we add a vote
-      console.log('upvote: FORCE UP voting')
       let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
       voteId = voteId[0].voteId;
-      console.log(voteId)
-
       // Remove downvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
         // Then add upvote
         this.votingService.createMessageVote(post.messageId).subscribe(res => {
-          console.log(res)
+          this.ngOnInit();
+        }, err => {
+          if (err.status === 500) return;
         });
       });
     }
@@ -110,41 +116,39 @@ export class PostComponent implements OnInit {
   // Downvote message
   downvote(post: Post) {
 
-    console.log(this.hasVoted(post))
-
     if (this.hasVoted(post) === 0) { // If user has NOT VOTED
       // User hasn't voted, so we add a downvote
-      console.log('downvote: DOWN voting')
-      // Add downvote
       this.votingService.createMessageDownVote(post.messageId).subscribe(res => {
-        console.log(res)
+        this.ngOnInit();
+      }, err => {
+        if (err.status === 500) return;
       });
     }
 
     if (this.hasVoted(post) === 1) { // If user HAS UPVOTED
       // User has voted, so we remove the vote
-      console.log('downvote: FORCE DOWN voting')
       let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
       voteId = voteId[0].voteId;
       // Delete upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
         // Add downvote
         this.votingService.createMessageDownVote(post.messageId).subscribe(res => {
-          console.log(res)
+          this.ngOnInit();
         });
+      }, err => {
+        if (err.status === 500) return;
       });
     }
 
     if (this.hasVoted(post) === -1) { // If user HAS DOWNVOTED
-      // User has downvoted, but wants to downvote again, so we remove the vote
-      console.log('downvote: CLEAR voting')
-
-      // Clear downvote
+      // User has downvoted, but wants to downvote again, so we clear vote
       let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
       voteId = voteId[0].voteId;
       // Delete upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
-        console.log(res)
+        this.ngOnInit();
+      }, err => {
+        if (err.status === 500) return;
       });
     }
   };
@@ -161,7 +165,7 @@ export class PostComponent implements OnInit {
     this.postService.getFollowingPosts().subscribe(res => {
       console.log(res);
     }, err => {
-      console.log(err);
+      if (err.status === 500) return;;
     })
 
     // following = true;

@@ -26,11 +26,5 @@ export class ExploreComponent implements OnInit {
     this.authService.loginStatus(); // Check if user is logged in, and handle accordingly
 
     this.type = 2;
-
-    this.postsService.getAllPosts().subscribe((res) => {
-      this.posts = res;
-      console.log(res)
-    })
-
   }
 }
