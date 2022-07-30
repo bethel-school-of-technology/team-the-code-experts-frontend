@@ -21,6 +21,7 @@ export class PostComponent implements OnInit {
   postType: number;
   noPostsMessage: any;
   votes: number = 0;
+  vote: number;
 
   constructor(
     private http: HttpClient, // Build private HTTP client
@@ -42,23 +43,57 @@ export class PostComponent implements OnInit {
     }
   }
 
-  upvote(postID: number) {
-    /**
-     * Upvote post
-     * If post already was upvoted by the user, remove vote
-     * Lastly, update vote count
-     */
-    this.votingService.upvote(postID);
+  upvote(postID: number, appUser, voteArray: any) {
+
+    if (voteArray == '' || voteArray == null) {
+
+      var mId = postID;
+
+      this.votingService.createMessageVote(mId)
+        .subscribe(async response => {
+          console.log(response);
+
+        })
+    }
+    else {
+      var vId = voteArray[0].voteId;
+      this.votingService.deleteMessageVote(vId, appUser)
+        .subscribe(async response => {
+          console.log(response);
+          //  this.posts = this.posts.filter(item=>item.messageId !== postID);
+        })
+      // this.votingService.upvote(postID, userID, voteArray);
+
+    }
   }
 
-  downvote(postID: number) {
+  downvote(postID: number, appUser, voteArray: any) {
     /**
      * Downvote post
      * If post already was downvoted by the user, remove vote
      * Lastly, update vote count
      */
-    this.votingService.downvote(postID);
 
+
+    if (voteArray == '' || voteArray == null) {
+
+      var mId = postID;
+
+      this.votingService.createMessageDownVote(mId)
+        .subscribe(async response => {
+          console.log(response);
+
+        })
+    }
+    else {
+      var vId = voteArray[0].voteId;
+      this.votingService.deleteMessageVote(vId, appUser)
+        .subscribe(async response => {
+          console.log(response);
+          // this.votingService.downvote(postID);
+
+        })
+    }
   }
 
   flag(postID: number) {
@@ -76,9 +111,9 @@ export class PostComponent implements OnInit {
 
     // following = true;
     // if (following === true) {
-      this.userService.followUser(userID).subscribe(res => {
-        console.log(res)
-      })
+    this.userService.followUser(userID).subscribe(res => {
+      console.log(res)
+    })
     // } else if (following === false) {
     //   this.userService.unfollowUser(userID).subscribe(res => {
 

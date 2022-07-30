@@ -30,13 +30,13 @@
                 <div class="row justify-content-between">
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xsm-2 justify-content-between">
                         <div class="row vote">
-                            <div class="vote-arrows" (click)="upvote(post.messageId)">
+                            <div class="vote-arrows" (click)="upvote(post.messageId, post.appUser, post.votes)">
                                 <img src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
-                                {{votes}}
+                                {{post.voteSummary}}
                             </div>
-                            <div class="vote-arrows" (click)="downvote(post.messageId)">
+                            <div class="vote-arrows" (click)="downvote(post.messageId, post.appUser, post.votes)">
                                 <img src="../../../assets/downvote.svg" alt="">
                             </div>
                         </div>

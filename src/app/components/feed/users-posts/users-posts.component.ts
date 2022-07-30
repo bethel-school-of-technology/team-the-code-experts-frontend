@@ -40,7 +40,7 @@ export class UsersPostsComponent implements OnInit {
      * If post already was upvoted by the user, remove vote
      * Lastly, update vote count
      */
-    this.votingService.upvote(postID);
+    // this.votingService.upvote(postID);
   }
 
   downvote(postID: number) {
@@ -49,7 +49,7 @@ export class UsersPostsComponent implements OnInit {
      * If post already was downvoted by the user, remove vote
      * Lastly, update vote count
      */
-    this.votingService.downvote(postID);
+    // this.votingService.downvote(postID);
   }
 
   deletePost(postID: number) {
