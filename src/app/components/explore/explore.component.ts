@@ -28,7 +28,7 @@ export class ExploreComponent implements OnInit {
     this.type = 2;
 
     this.postsService.getAllPosts().subscribe((res) => {
-      this.posts = res.reverse();
+      this.posts = res;
       console.log(res)
     })
 

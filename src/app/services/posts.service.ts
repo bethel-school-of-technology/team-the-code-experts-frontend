@@ -49,7 +49,7 @@ export class PostsService {
     let headers = this.authService.setTokenHeader();
     return this.http.delete<any>(`http://localhost:4000/api/messages/${id}`,
       {
-        headers: headers,
+        headers: headers
       }
     );
   }

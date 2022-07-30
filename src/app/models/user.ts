@@ -1,5 +1,4 @@
-export class Post {
-    messageId: number;
+export class User {
     appUser: {
         id: number;
         firstName: string;
@@ -14,10 +13,10 @@ export class Post {
     voteSummary: number;
     votes:  [
                 voteId: number,
-                // messageId: number,
-                // responseId: number,
-                // appUser: [],
-                // value: number,
+                messageId: number,
+                responseId: number,
+                appUser: [],
+                value: number,
             ];
     flags: [];
 }

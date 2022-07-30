@@ -29,14 +29,14 @@ export class VotingService {
       alert("There is a voting record, Deleting post")
       var vid = voteArray[0].voteId;
 
-      this.deleteMessageVote(vid, appUser)
+      this.deleteMessageVote(vid)
     }
   }
 
 
   downvote(postID: number, appUser: any, voteArray: any): any {
     alert('downvoted post: ' + postID)
-    
+
     if (voteArray == '' || voteArray == null) {
       //post if empty
       alert("There are no existing votes, an httpPost needs to occur.")
@@ -47,17 +47,15 @@ export class VotingService {
     {
       console.log("this is before the delete")
       alert("There is a voting record, Deleting post")
-      var vid = voteArray[0].voteId;
+      var vId = voteArray[0].voteId;
 
-      this.deleteMessageVote(vid, appUser)
+      this.deleteMessageVote(vId)
     }
   }
 
-  createMessageVote(ID: number) {
+  createMessageVote(messageId: number) {
     let headers = this.authService.setTokenHeader();
-    let queryParams = new HttpParams();
-    var value = "?voteValue=1";
-    return this.http.post<any>(("http://localhost:4000/api/Messages/voteMessage/" + ID + value),
+    return this.http.post<any>((`http://localhost:4000/api/messages/votemessage/${messageId}?voteValue=1`),
       {
         "voteId": 0,
         "messageId": 0,
@@ -78,11 +76,9 @@ export class VotingService {
       });
   }
 
-  createMessageDownVote(ID: number) {
+  createMessageDownVote(messageId: number) {
     let headers = this.authService.setTokenHeader();
-    let queryParams = new HttpParams();
-    var value = "?voteValue=-1";
-    return this.http.post<any>(("http://localhost:4000/api/Messages/voteMessage/" + ID + value),
+    return this.http.post<any>((`http://localhost:4000/api/messages/votemessage/${messageId}?voteValue=-1`),
       {
         "voteId": 0,
         "messageId": 0,
@@ -103,11 +99,11 @@ export class VotingService {
       });
   }
 
-  deleteMessageVote(ID: number, appUser) {
+  deleteMessageVote(voteId: number) {
     let headers = this.authService.setTokenHeader();
     console.log("before the delete HTTP method")
 
-    return this.http.delete<any>(`http://localhost:4000/api/Messages/voteMessage/${ID}`,
+    return this.http.delete<any>(`http://localhost:4000/api/Messages/voteMessage/${voteId}`,
       {
         headers: headers
       }

@@ -1,3 +1,17 @@
+<!-- *******************************
+     *******GET MESSAGE VOTES ON RENDER************
+     *******************************
+     *******************************
+    
+ -->
+
+
+
+
+
+
+
+
 <div class="posts justify-content-center">
     <!-- Post Card -->
     <div class="buffer"></div>
@@ -30,17 +44,17 @@
                 <div class="row justify-content-between">
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xsm-2 justify-content-between">
                         <div class="row vote">
-                            <div class="vote-arrows" (click)="upvote(post.messageId, post.appUser, post.votes)">
+                            <div class="vote-arrows" (click)="upvote(post)">
                                 <img [style]="
-                                ((voteStatus === 1) ? 'filter: none;' : 'filter: brightness(5) saturate(0%);')
+                                (currentUser && (hasVoted(post) === 1) ? 'filter: none;' : 'filter: brightness(5) saturate(0%);')
                             " src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{post.voteSummary}}
                             </div>
-                            <div class="vote-arrows" (click)="downvote(post.messageId, post.appUser, post.votes)">
+                            <div class="vote-arrows" (click)="downvote(post)">
                                 <img [style]="
-                                    ((voteStatus === -1) ? 'filter: none;' : 'filter: brightness(5) saturate(0%);')
+                                (currentUser && (hasVoted(post) === -1) ? 'filter: none;' : 'filter: brightness(5) saturate(0%);')
                                 " src="../../../assets/downvote.svg" alt="">
                             </div>
                         </div>
@@ -91,13 +105,15 @@
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows">
-                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/upvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/upvote.svg"
+                                    alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{votes}}
                             </div>
                             <div class="vote-arrows">
-                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg"
+                                    alt="">
                             </div>
                         </div>
                     </div>
@@ -138,15 +154,15 @@
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows">
-                                <img style="filter: brightness(5) saturate(0%);"
-                                    src="../../../assets/upvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/upvote.svg"
+                                    alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{votes}}
                             </div>
                             <div class="vote-arrows">
-                                <img style="filter: brightness(5) saturate(0%);"
-                                    src="../../../assets/downvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg"
+                                    alt="">
                             </div>
                         </div>
                     </div>
