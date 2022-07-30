@@ -21,12 +21,8 @@ import { PostInputComponent } from './components/post-input/post-input.component
 import { ExploreComponent } from './components/explore/explore.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
-import { ChangeUsernameComponent } from './components/settings/change-username/change-username.component';
-import { DeleteAccountComponent } from './components/settings/delete-account/delete-account.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { ChangeEmailComponent } from './components/settings/change-email/change-email.component';
 import { UsersPostsComponent } from './components/feed/users-posts/users-posts.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 
@@ -46,12 +42,8 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
     ExploreComponent,
     SettingsComponent,
     ProfileComponent,
-    ChangePasswordComponent,
-    ChangeUsernameComponent,
-    DeleteAccountComponent,
     LoginComponent,
     LogoutComponent,
-    ChangeEmailComponent,
     UsersPostsComponent,
     EditPostComponent,
   ],

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.user = this.cookieService.getUsername(); // Set username
 
     this.postsService.getFollowingPosts().subscribe(res => {
-      this.posts = res
+      this.posts = res.reverse()
       console.log(res)
     })
   }

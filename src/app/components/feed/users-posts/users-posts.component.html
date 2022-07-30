@@ -16,7 +16,8 @@
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
                         <!-- <a class="dropdown-item" (click)="sharePost(post.messageId)">Share</a> -->
-                        <a class="dropdown-item" (click)="editPost(post.messageId)">Edit</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#edit-post-modal">Edit</a>
+                        <!-- (click)="editPost(post.messageTitle, post.messageBody ,post.messageId, post.appUser.id)" -->
                         <a class="dropdown-item" (click)="deletePost(post.messageId)">Delete</a>
                     </div>
                 </div>
@@ -49,6 +50,13 @@
                 </div>
             </div>
         </div>
+        <!-- 
+            ***********************************
+            **     EDIT POST MODAL BELOW     **
+            ***********************************
+        -->
+        <app-edit-post class="modal fade" id="edit-post-modal" tabindex="-1" role="dialog"
+            aria-labelledby="postModalLable" aria-hidden="true" [postData]="post"></app-edit-post>
     </div>
 
     <!-- 
@@ -58,7 +66,7 @@
      -->
 
     <!-- No Posts EXPLORE Card Start -->
-    <div *ngIf="!postsArray" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
+    <div *ngIf="!postsArray || !postsArray?.length" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">

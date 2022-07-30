@@ -54,15 +54,18 @@ export class PostsService {
     );
   }
 
-  public editPost(Title: string, Body: string, id: number): Observable<any> {
+  public editPost(postId: number, title: string, body: string, timestamp: string, user: object): Observable<any> {
     let headers = this.authService.setTokenHeader();
-    return this.http.put<any>(`http://localhost:4000/api/messages/${id}`,
+    return this.http.put<any>(`http://localhost:4000/api/messages/${postId}`,
       {
-        messageTitle: Title,
-        messageBody: Body,
+        messageTitle: title,
+        messageBody: body,
+        messageId: postId,
+        dateStamp: timestamp,
+        appUser: user
       },
       {
-        headers: headers
+        headers: headers,
       }
     );
   }

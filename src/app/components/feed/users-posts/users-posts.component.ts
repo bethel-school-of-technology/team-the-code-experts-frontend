@@ -52,23 +52,20 @@ export class UsersPostsComponent implements OnInit {
     this.votingService.downvote(postID);
   }
 
-  editPost(postID: number) {
-    /**
-     * Edit post
-     * the editPost service needs a title, body, and post ID
-     */
-    let Title;
-    let Body;
-
-    this.postService.editPost(Title, Body, postID);
-  }
   deletePost(postID: number) {
-    /**
-     * Deleting posts needs the postID,
-     * then refresh the page
-     */
+    this.postService.deletePost(postID).subscribe(res => {
+      console.log(res);
 
-    this.deletePost(postID);
+
+      this.reloadComponent();
+    });
   }
+
+  reloadComponent() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  };
 
 }

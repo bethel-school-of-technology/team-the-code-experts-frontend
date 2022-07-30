@@ -59,7 +59,7 @@
      -->
 
     <!-- No Posts HOME Card Start -->
-    <div *ngIf="!posts.length && postType === 1" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
+    <div *ngIf="!posts?.length && postType === 1" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
@@ -106,7 +106,7 @@
     <!-- No Posts HOME Card End -->
 
     <!-- No Posts EXPLORE Card Start -->
-    <div *ngIf="!posts.length && postType === 2" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
+    <div *ngIf="!posts?.length && postType === 2" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto">
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
