@@ -1,7 +1,7 @@
 <div id="feed">
     <app-post [posts]="postsArray" [type]="feedType"></app-post>
     <div class="jtt justify-content-between">
-        <div *ngIf="postsArray.length > 5">
+        <div *ngIf="postsArray?.length > 5">
             jump to top
         </div>
     </div>

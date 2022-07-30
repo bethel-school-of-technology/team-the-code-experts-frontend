@@ -76,9 +76,9 @@ export class PostComponent implements OnInit {
 
     // following = true;
     // if (following === true) {
-    //   this.userService.followUser(userID).subscribe(res => {
-    //     console.log(res)
-    //   })
+      this.userService.followUser(userID).subscribe(res => {
+        console.log(res)
+      })
     // } else if (following === false) {
     //   this.userService.unfollowUser(userID).subscribe(res => {
 
