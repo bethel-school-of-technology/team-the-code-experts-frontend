@@ -21,7 +21,7 @@ export class PostComponent implements OnInit {
   postType: number;
   noPostsMessage: any;
   votes: number = 0;
-  vote: number;
+  voteStatus: number = 0; // 0 = no votes, 1 = upvote, -1 = downvote
 
   constructor(
     private http: HttpClient, // Build private HTTP client

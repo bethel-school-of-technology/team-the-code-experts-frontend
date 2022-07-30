@@ -3,7 +3,7 @@
     <div class="buffer"></div>
 
     <div *ngFor="let post of posts" class="col-xxl-6 col-xl-8 col-lg-11 col-md-12 mb-4 mx-auto">
-        <div class="card h-100 bg-mid shadow mb-4">
+        <div id="post-{{post.messageId}}" class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold">{{post.messageTitle}}</h6>
@@ -31,13 +31,17 @@
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows" (click)="upvote(post.messageId, post.appUser, post.votes)">
-                                <img src="../../../assets/upvote.svg" alt="">
+                                <img [style]="
+                                ((voteStatus === 1) ? 'filter: none;' : 'filter: brightness(5) saturate(0%);')
+                            " src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{post.voteSummary}}
                             </div>
                             <div class="vote-arrows" (click)="downvote(post.messageId, post.appUser, post.votes)">
-                                <img src="../../../assets/downvote.svg" alt="">
+                                <img [style]="
+                                    ((voteStatus === -1) ? 'filter: none;' : 'filter: brightness(5) saturate(0%);')
+                                " src="../../../assets/downvote.svg" alt="">
                             </div>
                         </div>
                     </div>
@@ -87,13 +91,13 @@
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows">
-                                <img src="../../../assets/upvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{votes}}
                             </div>
                             <div class="vote-arrows">
-                                <img src="../../../assets/downvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg" alt="">
                             </div>
                         </div>
                     </div>
@@ -134,13 +138,15 @@
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows">
-                                <img src="../../../assets/upvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);"
+                                    src="../../../assets/upvote.svg" alt="">
                             </div>
                             <div class="vote-count text-center">
                                 {{votes}}
                             </div>
                             <div class="vote-arrows">
-                                <img src="../../../assets/downvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);"
+                                    src="../../../assets/downvote.svg" alt="">
                             </div>
                         </div>
                     </div>

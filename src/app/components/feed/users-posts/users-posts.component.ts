@@ -55,8 +55,6 @@ export class UsersPostsComponent implements OnInit {
   deletePost(postID: number) {
     this.postService.deletePost(postID).subscribe(res => {
       console.log(res);
-
-
       this.reloadComponent();
     });
   }
