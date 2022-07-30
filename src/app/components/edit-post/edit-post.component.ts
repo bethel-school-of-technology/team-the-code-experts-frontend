@@ -41,30 +41,6 @@ export class EditPostComponent implements OnInit {
       postID, this.postForm.value.postTitle, this.postForm.value.postBody, timestamp, user).subscribe(res => {
         this.reloadComponent();
       });
-
-    // this.postService.createPost({
-    //   Title: this.postForm.value.postTitle,
-    //   Body: this.postForm.value.postBody,
-    // })
-    // .subscribe(async (res) => {
-    //   console.log(res)
-    //   if (res.appUser) {
-    //     this.postForm.reset();
-    // this.reloadComponent();
-    //     this.toast.success({
-    //       detail: "Success!",
-    //       summary: "Post was successful!",
-    //       duration: 5000
-    //     })
-    //   } else {
-    //     this.reloadComponent();
-    //     this.toast.warning({
-    //       detail: "Error",
-    //       summary: "Post failed :/",
-    //       duration: 5000
-    //     })
-    //   }
-    // })
   };
 
   reloadComponent() {
