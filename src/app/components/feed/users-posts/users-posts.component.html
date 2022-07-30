@@ -16,7 +16,7 @@
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
                         <!-- <a class="dropdown-item" (click)="sharePost(post.messageId)">Share</a> -->
-                        <a class="dropdown-item" (click)="editPost(post.messageId)">Edit</a>
+                        <a class="dropdown-item" (click)="editPost(tempTitle, tempBody, post.messageId, post.appUser.id)">Edit</a>
                         <a class="dropdown-item" (click)="deletePost(post.messageId)">Delete</a>
                     </div>
                 </div>

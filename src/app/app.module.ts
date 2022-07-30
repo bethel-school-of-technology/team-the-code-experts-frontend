@@ -28,6 +28,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ChangeEmailComponent } from './components/settings/change-email/change-email.component';
 import { UsersPostsComponent } from './components/feed/users-posts/users-posts.component';
+import { EditPostComponent } from './components/feed/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [ // Components
@@ -52,6 +53,7 @@ import { UsersPostsComponent } from './components/feed/users-posts/users-posts.c
     LogoutComponent,
     ChangeEmailComponent,
     UsersPostsComponent,
+    EditPostComponent,
   ],
   imports: [ // Modules
     BrowserModule,

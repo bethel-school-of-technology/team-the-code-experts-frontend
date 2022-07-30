@@ -1,68 +1,75 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
-import { AuthService } from './auth.service';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { CookieService } from "ngx-cookie-service";
+import { AuthService } from "./auth.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PostsService {
-
   constructor(
     private http: HttpClient, // Build private HTTP client
     private router: Router, // Build private router
     private cookieService: CookieService, // Create cookie service
-    private authService: AuthService, // Create Auth service
-  ) { }
+    private authService: AuthService // Create Auth service
+  ) {}
   /**
-   * 
+   *
    * @param post Post object
    * @param post.Title Post title string
    * @param post.Body Post body string
    * @returns HTTP response
    */
-  public createPost(post: { Title: string; Body: string; }): Observable<any> {
+  public createPost(post: { Title: string; Body: string }): Observable<any> {
     let headers = this.authService.setTokenHeader();
-    return this.http.post<any>('http://localhost:4000/api/Messages',
+    return this.http.post<any>(
+      "http://localhost:4000/api/Messages",
       {
         messageTitle: post.Title,
-        messageBody: post.Body
+        messageBody: post.Body,
       },
       {
-        headers: headers
+        headers: headers,
       }
     );
   }
 
   public getAllPosts(): Observable<any> {
     let headers = this.authService.setTokenHeader();
-    return this.http.get<any>('http://localhost:4000/api/messages',
-      {
-        headers: headers
-      }
-    );
+    return this.http.get<any>("http://localhost:4000/api/messages", {
+      headers: headers,
+    });
   }
 
   public deletePost(id: number): Observable<any> {
     let headers = this.authService.setTokenHeader();
-    return this.http.delete<any>(`http://localhost:4000/api/messages/${id}`,
-      {
-        headers: headers
-      }
-    );
+    return this.http.delete<any>(`http://localhost:4000/api/messages/${id}`, {
+      headers: headers,
+    });
   }
 
-  public editPost(Title: string, Body: string, id: number): Observable<any> {
+  public editPost(Title: string, Body: string, postId: number, userId: number): Observable<any> {
     let headers = this.authService.setTokenHeader();
-    return this.http.put<any>(`http://localhost:4000/api/messages/${id}`,
+    return this.http.put<any>(
+      `http://localhost:4000/api/messages/${postId}`,
       {
         messageTitle: Title,
         messageBody: Body,
+        messageId: postId,
+        dateStamp: "2022-07-30T00:00:27.411Z",
+        appUser: {
+          id: userId,
+          firstName: "",
+          lastName: "",
+          email: "",
+          username: "",
+          role: 0
+        }
       },
       {
-        headers: headers
+        headers: headers,
       }
     );
   }
@@ -75,5 +82,4 @@ export class PostsService {
   //     }
   //   );
   // }
-
 }
