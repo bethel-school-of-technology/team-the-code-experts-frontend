@@ -17,9 +17,41 @@
     margin-right: auto;
 }
 
+.vote-arrows:hover {
+    filter: brightness(70%);
+}
+
 .vote-count {
     text-align: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.jtt {
+    margin-top: 5em;
+    margin: 2em;
+    position: relative;
+}
+
+.jtt-button {
+    width: 2em;
+    width: 2em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+}
+
+.jtt-img {
+    margin-top: 2em !important;
+    width: 3em !important;
+    width: 3em !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jtt-img:hover {
+    filter: brightness(70%);
 }

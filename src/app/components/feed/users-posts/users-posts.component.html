@@ -28,7 +28,7 @@
             </div>
             <div class="card-footer">
                 <div class="row justify-content-between">
-                    <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
+                    <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows" (click)="upvote(post)">
                                 <img [style]="
@@ -45,9 +45,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="justify-content-end col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xsm-3">
-                    </div>
-                    <div class="justify-content-end col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xsm-5">
+                    <!-- <div class="justify-content-end col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xsm-3">
+                    </div> -->
+                    <div class="justify-content-end col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-9 col-xsm-7">
                         <a>{{post.appUser.username}}</a>
                         <a> // {{post.dateStamp | date: 'short' }}</a>
                     </div>
@@ -96,7 +96,7 @@
             </div>
             <div class="card-footer">
                 <div class="row">
-                    <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
+                    <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-3 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows">
                                 <img style="filter: brightness(5) saturate(0%);" src="../../../assets/upvote.svg" alt="">
@@ -116,4 +116,11 @@
         </div>
     </div>
     <!-- No Posts EXPLORE Card End -->
+    <!--Jump to top -->
+    <div class="jtt col-xxl-6 col-xl-8 col-lg-11 col-md-12 mx-auto" *ngIf="postsArray?.length > 5">
+        <!-- Add jump to top -->
+        <div class="jtt-button justify-content-center text-center" (click)="jumpToTop()">
+            <img class="jtt-img mx-auto" src="../../../../assets/upvote.svg" alt="Jump to top button">
+        </div>
+    </div>
 </div>

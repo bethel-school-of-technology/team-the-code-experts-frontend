@@ -47,3 +47,7 @@
     left: 0;
     overflow-x: hidden;
 }
+
+.feed {
+    padding-bottom: 7em;
+}

@@ -22,7 +22,7 @@ export class PostComponent implements OnInit {
   public posts: Post[];
   postType: number;
   noPostsMessage: any;
-  currentUser: User;
+  currentUser: any;
   followingUsers: User;
 
   constructor(
@@ -44,10 +44,8 @@ export class PostComponent implements OnInit {
     });
 
     // Get user data
-    this.userService.getUserProfile().subscribe(res => {
+    this.userService.getCurrentUser().subscribe(res => {
       this.currentUser = res;
-      console.log(this.currentUser)
-
     });
 
     // Run for explore page
@@ -75,8 +73,8 @@ export class PostComponent implements OnInit {
   // Checks if user has voted, and vote status
   hasVoted(post: Post): number {
     // Return 1 if user has voted on the post, 0 if they have not, and -1 if its a downvote
-    if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0]?.appUser.id && vote.value === 1).length) return 1
-    else if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0]?.appUser.id && vote.value === -1).length) return -1
+    if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id && vote.value === 1).length) return 1
+    else if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id && vote.value === -1).length) return -1
     else return 0;
   };
 
@@ -95,7 +93,7 @@ export class PostComponent implements OnInit {
 
     if (this.hasVoted(post) === 1) { // If user HAS UPVOTED
       // User has voted, so we remove the vote
-      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
+      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id));
       voteId = voteId[0].voteId;
       // Clear upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
@@ -107,7 +105,7 @@ export class PostComponent implements OnInit {
 
     if (this.hasVoted(post) === -1) { // If user HAS DOWNVOTED
       // User has downvoted, but wants to upvote, so we add a vote
-      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
+      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id));
       voteId = voteId[0].voteId;
       // Remove downvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
@@ -135,7 +133,7 @@ export class PostComponent implements OnInit {
 
     if (this.hasVoted(post) === 1) { // If user HAS UPVOTED
       // User has voted, so we remove the vote
-      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
+      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id));
       voteId = voteId[0].voteId;
       // Delete upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
@@ -150,7 +148,7 @@ export class PostComponent implements OnInit {
 
     if (this.hasVoted(post) === -1) { // If user HAS DOWNVOTED
       // User has downvoted, but wants to downvote again, so we clear vote
-      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
+      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id));
       voteId = voteId[0].voteId;
       // Delete upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {

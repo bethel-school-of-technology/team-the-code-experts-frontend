@@ -6,7 +6,7 @@
     }
 
     /* Move feed to adjust for sidebar */
-    #profile {
+    .feed {
         padding-left: 17em;
     }
 }
@@ -20,8 +20,9 @@
 }
 
 #mobile-nav {
+    display: block;
     overflow: visible;
-    position: absolute;
+    position: fixed;
     z-index: 20;
     bottom: 0;
     width: 100%;

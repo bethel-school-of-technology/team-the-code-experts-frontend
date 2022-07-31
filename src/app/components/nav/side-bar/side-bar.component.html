@@ -21,7 +21,7 @@
     <li class="nav-item">
         <a class="nav-link" routerLink="/home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Home</span></a>
+            <span [style]="'color:' + (currentRoute === '/home' ? '#ff6d15;' : '')">Home</span></a>
     </li>
 
     <!-- Divider -->
@@ -31,7 +31,7 @@
     <li class="nav-item">
         <a class="nav-link" routerLink="/explore">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Explore</span></a>
+            <span [style]="'color:' + (currentRoute === '/explore' ? '#ff6d15;' : '')">Explore</span></a>
     </li>
 
     <!-- Divider -->
@@ -41,7 +41,8 @@
     <li class="nav-item">
         <a class="nav-link" routerLink="/profile">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Profile</span></a>
+            <span [style]="'color:' + (currentRoute === '/profile' ? '#ff6d15;' : '')">Profile</span>
+        </a>
     </li>
 
     <!-- Divider -->
@@ -57,10 +58,6 @@
         <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Settings:</h6>
-                <!-- <a class="collapse-item" routerLink="/changeUsername">Username</a>
-                <a class="collapse-item" routerLink="/changeEmail">Email</a>
-                <a class="collapse-item" routerLink="/changePassword">Password</a>
-                <a class="collapse-item" routerLink="/deleteAccount">Delete Account</a> -->
                 <a class="collapse-item" (click)="signOut()">Sign out</a>
             </div>
         </div>

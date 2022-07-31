@@ -56,6 +56,15 @@ export class UserService {
     );
   }
 
+  public getCurrentUser(): Observable<any> {
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.get<any>('http://localhost:4000/api/users/currentuser',
+      {
+        headers: headers
+      }
+    );
+  }
+
   // Observable<any>
   // Log out user
   public signOut(): void {

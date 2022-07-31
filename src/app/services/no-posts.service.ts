@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class NoPostsService {
 
-  public noPostsMessages = ["It's awfully quiet around here...", "<i>Chirp chirp chirp</i>", "Your feed appears to be empty..."]
+  public noPostsMessages = ["It's awfully quiet around here...", "<i>Chirp chirp... Chirp chirp...</i>", "Your feed appears to be empty..."]
   
   constructor() { }
 

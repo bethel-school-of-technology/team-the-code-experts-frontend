@@ -21,7 +21,7 @@ export class PostsComponent implements OnInit {
   public postsArray: Post[];
   noPostsMessage: any;
   votes: number = 0;
-  currentUser: User;
+  currentUser: any;
   reqUser: any;
 
   constructor(
@@ -37,6 +37,10 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     let userId = Number(this.route.snapshot.paramMap.get('id'))
+
+    this.userService.getCurrentUser().subscribe(res => {
+      this.currentUser = res;
+    })
 
     this.userService.getSpecificUser(userId).subscribe((res) => {
       this.reqUser = res;
@@ -55,8 +59,8 @@ export class PostsComponent implements OnInit {
   // Checks if user has voted, and vote status
   hasVoted(post: Post): number {
     // Return 1 if user has voted on the post, 0 if they have not, and -1 if its a downvote
-    if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id && vote.value === 1).length) return 1
-    else if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id && vote.value === -1).length) return -1
+    if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id && vote.value === 1).length) return 1
+    else if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id && vote.value === -1).length) return -1
     else return 0;
   };
 
@@ -77,7 +81,7 @@ export class PostsComponent implements OnInit {
 
     if (this.hasVoted(post) === 1) { // If user HAS UPVOTED
       // User has voted, so we remove the vote
-      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
+      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id));
       voteId = voteId[0].voteId;
       // Clear upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
@@ -89,7 +93,7 @@ export class PostsComponent implements OnInit {
 
     if (this.hasVoted(post) === -1) { // If user HAS DOWNVOTED
       // User has downvoted, but wants to upvote, so we add a vote
-      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
+      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id));
       voteId = voteId[0].voteId;
       // Remove downvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
@@ -119,7 +123,7 @@ export class PostsComponent implements OnInit {
 
     if (this.hasVoted(post) === 1) { // If user HAS UPVOTED
       // User has voted, so we remove the vote
-      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
+      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id));
       voteId = voteId[0].voteId;
       // Delete upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
@@ -134,7 +138,7 @@ export class PostsComponent implements OnInit {
 
     if (this.hasVoted(post) === -1) { // If user HAS DOWNVOTED
       // User has downvoted, but wants to downvote again, so we clear vote
-      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser[0].appUser.id));
+      let voteId: any = (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id));
       voteId = voteId[0].voteId;
       // Delete upvote
       this.votingService.deleteMessageVote(voteId).subscribe(res => {
@@ -158,5 +162,10 @@ export class PostsComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
   };
+
+  jumpToTop(): void {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
 
 }

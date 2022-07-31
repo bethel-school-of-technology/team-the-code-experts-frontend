@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
   public user: string;
+  public currentRoute: any;
 
   constructor(
     private http: HttpClient, // Build private HTTP client
@@ -18,6 +19,8 @@ export class SideBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.currentRoute = this.router.url;
+
     this.user = this.userService.getUser();
   }
 

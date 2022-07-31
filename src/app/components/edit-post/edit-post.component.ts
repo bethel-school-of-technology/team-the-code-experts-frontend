@@ -39,7 +39,7 @@ export class EditPostComponent implements OnInit {
 
     this.postService.editPost(
       postID, this.postForm.value.postTitle, this.postForm.value.postBody, timestamp, user).subscribe(res => {
-        this.reloadComponent();
+        this.ngOnInit();
       });
   };
 
