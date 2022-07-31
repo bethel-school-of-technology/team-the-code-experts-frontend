@@ -27,6 +27,7 @@ import { UsersPostsComponent } from './components/feed/users-posts/users-posts.c
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { UserprofileComponent } from './components/profile/userprofile/userprofile.component';
 import { PostsComponent } from './components/profile/userprofile/posts/posts.component';
+import { MobileLogoutComponent } from './components/logout/mobile-logout/mobile-logout.component';
 
 @NgModule({
   declarations: [ // Components
@@ -50,6 +51,7 @@ import { PostsComponent } from './components/profile/userprofile/posts/posts.com
     EditPostComponent,
     UserprofileComponent,
     PostsComponent,
+    MobileLogoutComponent,
   ],
   imports: [ // Modules
     BrowserModule,
