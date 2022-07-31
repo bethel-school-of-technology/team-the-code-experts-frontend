@@ -10,6 +10,7 @@ import { VotingService } from 'src/app/services/voting.service';
 import { FlaggingService } from 'src/app/services/flagging.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-post',
@@ -228,5 +229,16 @@ export class PostComponent implements OnInit {
     // if (this.isFollowing(post, this.followingUsers)) return 'Flag'
     // else return 'Flagged';
     return 'Flag'
+  }
+
+  /****************************************
+   *                                       *
+   *           Jump to top below           *
+   *                                       *
+   *****************************************/
+
+  jumpToTop(): void {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 }

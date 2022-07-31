@@ -160,10 +160,10 @@
     </div>
     <!-- No Posts EXPLORE Card End -->
 
-    <div class="jtt justify-content-between">
-        <div *ngIf="posts?.length > 5">
-            <!-- Add jump to top -->
-            <h1>nice</h1>
+    <div class="container jtt col-12" *ngIf="posts?.length > 5">
+        <!-- Add jump to top -->
+        <div class="jtt-button" (click)="jumpToTop()">
+            <img class="mx-auto" src="../../../../assets/upvote.svg" alt="Jump to top button">
         </div>
     </div>
 </div>

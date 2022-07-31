@@ -17,9 +17,30 @@
     margin-right: auto;
 }
 
+.vote-arrows:hover {
+    filter: brightness(70%);
+}
+
 .vote-count {
     text-align: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.jtt {
+    margin: 25px;
+    width: 350px;
+    height: 200px;
+    /* Setup */
+    position: relative;
+}
+
+.jtt-button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
 }
