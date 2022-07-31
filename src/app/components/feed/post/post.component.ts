@@ -159,11 +159,18 @@ export class PostComponent implements OnInit {
     }
   };
 
+
   /*************************************
    *                                   *
    *          Following below          *
    *                                   *
    *************************************/
+
+  // Checks if current user made post
+  isCurrentUserPost(post: any): boolean {
+    // Returns true if currentUser made post, else return false
+    return post.appUser.id !== this.currentUser.id
+  }
 
   // Checks if user is following. bool true/false
   isFollowing(post: any, appUser: any): boolean {
