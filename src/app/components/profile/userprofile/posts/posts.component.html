@@ -15,7 +15,10 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Post Options:</div>
-                        <a class="dropdown-item">Flag</a>
+                        <!-- NTH: Flag posts here -->
+                        <!-- <a class="dropdown-item" (click)="handleFlag(post)">{{flagStatus(post)}}</a> -->
+                        <a *ngIf="isCurrentUserPost(post)" class="dropdown-item"
+                            (click)="handleFollow(post)">{{followStatus(post)}}</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +74,7 @@
         <div class="card h-100 bg-mid shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header bg-mid py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold">{{reqUser.firstName}} doesn't appear to have any posts yet...</h6>
+                <h6 class="m-0 font-weight-bold">{{reqUser?.firstName || 'This user'}} doesn't appear to have any posts yet...</h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -92,13 +95,15 @@
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xsm-2 justify-content-between">
                         <div class="row vote">
                             <div class="vote-arrows">
-                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/upvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/upvote.svg"
+                                    alt="">
                             </div>
                             <div class="vote-count text-center">
                                 0
                             </div>
                             <div class="vote-arrows">
-                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg" alt="">
+                                <img style="filter: brightness(5) saturate(0%);" src="../../../assets/downvote.svg"
+                                    alt="">
                             </div>
                         </div>
                     </div>

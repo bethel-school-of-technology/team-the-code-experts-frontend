@@ -35,17 +35,18 @@ export class PostComponent implements OnInit {
     private userService: UserService, // Import user service
   ) { }
 
-  ngOnInit(): void {
+  // Make async so request happen asynchronously
+  async ngOnInit(): Promise<void> {
     this.postType = this.type;
-
-    this.postService.getFollowingPosts().subscribe(res => {
-      this.followingUsers = res;
-      console.log(res)
-    });
 
     // Get user data
     this.userService.getCurrentUser().subscribe(res => {
       this.currentUser = res;
+    });
+
+    this.postService.getFollowingPosts().subscribe(res => {
+      this.followingUsers = res;
+      console.log(res)
     });
 
     // Run for explore page
@@ -206,34 +207,47 @@ export class PostComponent implements OnInit {
    *           Flagging below           *
    *                                    *
    **************************************/
-  isFlagged(post: any, appUser: any): any {
-    console.log(post)
-    //  Return true if following, false if not following
-    // if (appUser.filter((user: any) => user.appUser.id === post.appUser.id).length) return true
-    // else if (appUser.filter((user: any) => user.appUser.id !== post.appUser.id).length) return false
-    // else return null;
-  };
+  isFlagged(post: any/*, appUser: any*/): any {
 
-  handleFlag(post: any): any {
-    // this.isFlagged(post, this.flaggedPosts)
-    // if (!this.isFollowing(post, this.followingUsers)) { // If NOT following, follow
-    //   this.userService.followUser(post.appUser.id).subscribe(res => {
-    //     console.log(res)
-    //     this.ngOnInit();
-    //   });
-    // } else if (this.isFollowing(post, this.followingUsers)) { // If following, unfollow
-    //   this.userService.unfollowUser(post.appUser.id).subscribe(res => {
-    //     console.log(res)
-    //     this.ngOnInit();
-    //   });
-    // }
+    if (!post.flags.length) {
+      //flag array is empty, no flag
+      return 0;
+    }
+    //flag array exists
+    else return 1;
+
   }
 
+  handleFlag(post: Post): any {
+    //method calls isFlagged to check to see if there is an existing flag, if there is, 
+    //uses createFlag with HTTP POST. If not uses HTTP DELETE deleteFlag.
+
+    var postId = post.messageId;
+
+    if (this.isFlagged(post) === 0) {
+      //then flag does not exist, HTTP POST flag
+      this.flaggingService.createFlag(postId).subscribe(res => {
+        console.log(res)
+        this.ngOnInit();
+      });
+    }
+
+    //flag exists, delete flag
+    else {
+      //flagId is inside flag[0] array
+      var flagId = post.flags[0]['flagId'];
+
+      this.flaggingService.deleteFlag(flagId).subscribe(res => {
+        console.log(res)
+        this.ngOnInit();
+      });
+    }
+  }
+
+
   flagStatus(post: Post): string {
-    // If followingUsers contains user ID from post, switch text from "follow" to "unfollow"
-    // if (this.isFollowing(post, this.followingUsers)) return 'Flag'
-    // else return 'Flagged';
-    return 'Flag'
+    if (!post.flags.length) return 'Flagged'
+    else return 'Flag';
   }
 
   /****************************************

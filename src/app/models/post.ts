@@ -1,3 +1,5 @@
+import { NgIf } from "@angular/common";
+
 export class Post {
     messageId: number;
     appUser: {
@@ -19,5 +21,8 @@ export class Post {
                 // appUser: [],
                 // value: number,
             ];
-    flags: [];
+    flags: [
+                flagId: number,
+                reasonId: number 
+    ];
 }

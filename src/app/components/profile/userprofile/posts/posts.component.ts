@@ -23,6 +23,7 @@ export class PostsComponent implements OnInit {
   votes: number = 0;
   currentUser: any;
   reqUser: any;
+  followingUsers: any;
 
   constructor(
     private http: HttpClient, // Build private HTTP client
@@ -35,8 +36,18 @@ export class PostsComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     let userId = Number(this.route.snapshot.paramMap.get('id'))
+
+    // Get user data
+    this.userService.getCurrentUser().subscribe(res => {
+      this.currentUser = res;
+    });
+
+    this.postService.getFollowingPosts().subscribe(res => {
+      this.followingUsers = res;
+      console.log(res)
+    });
 
     this.userService.getCurrentUser().subscribe(res => {
       this.currentUser = res;
@@ -56,6 +67,12 @@ export class PostsComponent implements OnInit {
   }
 
 
+  /************************************
+ *                                  *
+ *           Voting below           *
+ *                                  *
+ ************************************/
+
   // Checks if user has voted, and vote status
   hasVoted(post: Post): number {
     // Return 1 if user has voted on the post, 0 if they have not, and -1 if its a downvote
@@ -63,8 +80,6 @@ export class PostsComponent implements OnInit {
     else if (post.votes.filter((vote: any) => vote.appUser.id === this.currentUser.id && vote.value === -1).length) return -1
     else return 0;
   };
-
-
 
   // Upvotes message
   upvote(post: Post) {
@@ -107,8 +122,6 @@ export class PostsComponent implements OnInit {
     }
   };
 
-
-
   // Downvote message
   downvote(post: Post) {
 
@@ -149,19 +162,103 @@ export class PostsComponent implements OnInit {
     }
   };
 
-  deletePost(postID: number) {
-    this.postService.deletePost(postID).subscribe(res => {
-      console.log(res);
-      this.reloadComponent();
-    });
+
+  /*************************************
+   *                                   *
+   *          Following below          *
+   *                                   *
+   *************************************/
+
+  // Checks if current user made post
+  isCurrentUserPost(post: any): boolean {
+    // Returns true if currentUser made post, else return false
+    return post.appUser.id !== this.currentUser.id
   }
 
-  reloadComponent() {
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
+  // Checks if user is following. bool true/false
+  isFollowing(post: any, appUser: any): boolean {
+    //  Return true if following, false if not following
+    if (appUser.filter((user: any) => user.appUser.id === post.appUser.id).length) return true
+    else if (appUser.filter((user: any) => user.appUser.id !== post.appUser.id).length) return false
+    else return null;
   };
+
+  // Follows un-following users, and un-follows following users
+  handleFollow(post: Post): any {
+    if (!this.isFollowing(post, this.followingUsers)) { // If NOT following, follow
+      this.userService.followUser(post.appUser.id).subscribe(res => {
+        console.log(res)
+        this.ngOnInit();
+      });
+    } else if (this.isFollowing(post, this.followingUsers)) { // If following, unfollow
+      this.userService.unfollowUser(post.appUser.id).subscribe(res => {
+        console.log(res)
+        this.ngOnInit();
+      });
+    }
+  }
+
+  followStatus(post: Post): string {
+    // If followingUsers contains user ID from post, switch text from "follow" to "unfollow"
+    if (this.isFollowing(post, this.followingUsers)) return 'Unfollow'
+    else return 'Follow';
+  }
+
+  /**************************************
+   *                                    *
+   *           Flagging below           *
+   *                                    *
+   **************************************/
+  isFlagged(post: any/*, appUser: any*/): any {
+
+    if (!post.flags.length) {
+      //flag array is empty, no flag
+      return 0;
+    }
+    //flag array exists
+    else return 1;
+
+  }
+
+  handleFlag(post: Post): any {
+    //method calls isFlagged to check to see if there is an existing flag, if there is, 
+    //uses createFlag with HTTP POST. If not uses HTTP DELETE deleteFlag.
+
+    var postId = post.messageId;
+
+    if (this.isFlagged(post) === 0) {
+      //then flag does not exist, HTTP POST flag
+      this.flaggingService.createFlag(postId).subscribe(res => {
+        console.log(res)
+        this.ngOnInit();
+      });
+    }
+
+    //flag exists, delete flag
+    else {
+      //flagId is inside flag[0] array
+      var flagId = post.flags[0]['flagId'];
+
+      this.flaggingService.deleteFlag(flagId).subscribe(res => {
+        console.log(res)
+        this.ngOnInit();
+      });
+    }
+  }
+
+
+  flagStatus(post: Post): string {
+    console.log(post.flags)
+    
+    if (!post.flags.length) return 'Flagged'
+    else return 'Flag';
+  }
+
+  /****************************************
+   *                                       *
+   *           Jump to top below           *
+   *                                       *
+   *****************************************/
 
   jumpToTop(): void {
     document.body.scrollTop = 0; // For Safari

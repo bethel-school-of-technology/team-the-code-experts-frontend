@@ -13,10 +13,23 @@ export class FlaggingService {
     private browserCookieService: CookieService, // Cookie service
   ) { }
 
-  flag(postID: number): Observable<any> {
+  createFlag(postID: number): Observable<any> {
+
     let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
-    return this.http.post<any>(`http://localhost:4000/api/messages/flag/${postID}`,
-      {},
+    return this.http.post<any>(`http://localhost:4000/api/messages/messageFlag/${postID}`,
+      {
+        reasonId: 2
+      },
+      {
+        headers: headers
+      }
+    );
+  }
+
+  deleteFlag(flagId: number) {
+    
+    let headers = new HttpHeaders({ Authorization: 'Bearer ' + this.browserCookieService.get('token') });
+    return this.http.delete<any>(`http://localhost:4000/api/Messages/flag/${flagId}`,
       {
         headers: headers
       }
