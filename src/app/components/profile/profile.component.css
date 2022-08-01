@@ -20,12 +20,12 @@
 }
 
 #mobile-nav {
-    display: block;
-    overflow: visible;
-    position: fixed;
-    z-index: 20;
-    bottom: 0;
-    width: 100%;
+    display: block !important;
+    overflow: visible !important;
+    position: fixed !important;
+    z-index: 20 !important;
+    bottom: 0 !important;
+    width: 100% !important;
 }
 
 #nav {

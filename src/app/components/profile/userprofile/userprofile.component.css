@@ -20,8 +20,9 @@
 }
 
 #mobile-nav {
+    display: block;
     overflow: visible;
-    position: absolute;
+    position: fixed;
     z-index: 20;
     bottom: 0;
     width: 100%;
