@@ -8,7 +8,7 @@
         </div>
         <div class="modal-body">
             <form class="post" [formGroup]="postForm"
-                (ngSubmit)="edit(postData.messageId, postData.dateStamp, postData.appUser)">
+                (ngSubmit)="edit(postData.messageId, postData.dateStamp, postData.appUser, postData.voteSummary)">
                 <div class="form-group">
                     <input (keydown.enter)="handleKeyEnter($event)"
                         [ngStyle]="{'border': (postForm.controls['postTitle'].dirty && postForm.hasError('required', 'postTitle') ? '2px solid rgb(219, 24, 24)' : '2px solid rgb(217, 216, 225)')}"
@@ -30,7 +30,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary text-gray-100" data-dismiss="modal">Close</button>
                 <button [disabled]="!postForm.valid"
-                    (click)="edit(postData.messageId, postData.dateStamp, postData.appUser)" type="button"
+                    (click)="edit(postData.messageId, postData.dateStamp, postData.appUser, postData.voteSummary)" type="button"
                     class="btn bg-orange text-gray-100" data-dismiss="modal">Update</button>
             </div>
         </div>
