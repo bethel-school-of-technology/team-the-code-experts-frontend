@@ -40,7 +40,7 @@ export class EditPostComponent implements OnInit {
 
     this.postService.editPost(
       postID, this.postForm.value.postTitle, this.postForm.value.postBody, timestamp, user, this.postData.voteSummary).subscribe(res => {
-        this.ngOnInit();
+        this.reloadComponent();
       });
   };
 
