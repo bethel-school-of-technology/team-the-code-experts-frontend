@@ -246,8 +246,8 @@ export class PostComponent implements OnInit {
 
 
   flagStatus(post: Post): string {
-    if (!post.flags.length) return 'Flagged'
-    else return 'Flag';
+    if (!post.flags.length) return 'Flag'
+    else return 'Flagged';
   }
 
   /****************************************
