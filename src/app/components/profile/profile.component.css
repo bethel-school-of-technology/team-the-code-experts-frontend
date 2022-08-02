@@ -20,7 +20,7 @@
 }
 
 #mobile-nav {
-    display: block !important;
+    /* display: block !important; */
     overflow: visible !important;
     position: fixed !important;
     z-index: 20 !important;
